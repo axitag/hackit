@@ -1,26 +1,417 @@
+/* ========== GOOGLE FONTS ========== */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap');
+
 @import "tailwindcss";
 
+/* ========== CSS CUSTOM PROPERTIES ========== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --text: #f0f0f0;
+  --accent: #E8003D;
+  --glitch-cyan: #00FFFF;
+  --glitch-magenta: #FF00FF;
+  --ink-dark: #1a1a1a;
+  --ink-light: #ffffff;
+
+  --font-display: 'Bangers', cursive;
+  --font-body: 'Special Elite', cursive;
+  --font-label: 'Courier Prime', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ========== BASE RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ========== FONT CLASSES ========== */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-label {
+  font-family: var(--font-label);
+}
+
+/* ========== HALFTONE DOT OVERLAY ========== */
+.halftone-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.04;
+  background-image: radial-gradient(circle, var(--text) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+/* ========== COMIC BORDERS ========== */
+.comic-border {
+  border: 3.5px solid var(--ink-light);
+  box-shadow:
+    4px 4px 0 var(--ink-dark),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.comic-border-red {
+  border: 3.5px solid var(--accent);
+  box-shadow:
+    4px 4px 0 rgba(232, 0, 61, 0.3),
+    0 0 20px rgba(232, 0, 61, 0.15);
+}
+
+/* ========== CHROMATIC ABERRATION / GLITCH ========== */
+.glitch-text {
+  text-shadow:
+    -2px 0 var(--glitch-cyan),
+    2px 0 var(--glitch-magenta);
+}
+
+.glitch-text-subtle {
+  text-shadow:
+    -1px 0 var(--glitch-cyan),
+    1px 0 var(--glitch-magenta);
+}
+
+@keyframes glitchFlicker {
+  0% {
+    text-shadow: -2px 0 var(--glitch-cyan), 2px 0 var(--glitch-magenta);
+  }
+
+  20% {
+    text-shadow: 3px 0 var(--glitch-cyan), -3px 0 var(--glitch-magenta);
+  }
+
+  40% {
+    text-shadow: -1px 2px var(--glitch-cyan), 1px -2px var(--glitch-magenta);
+  }
+
+  60% {
+    text-shadow: 4px -1px var(--glitch-cyan), -4px 1px var(--glitch-magenta);
+  }
+
+  80% {
+    text-shadow: -2px 0 var(--glitch-cyan), 2px 0 var(--glitch-magenta);
+  }
+
+  100% {
+    text-shadow: 0 0 transparent, 0 0 transparent;
+  }
+}
+
+.glitch-hover:hover {
+  animation: glitchFlicker 0.4s steps(5) forwards;
+}
+
+/* ========== STUTTER / SPIDER-VERSE 12fps ========== */
+@keyframes stutterIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+
+  30% {
+    opacity: 0.4;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  60% {
+    opacity: 0.7;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  80% {
+    opacity: 0.9;
+    transform: translateY(3px) scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.stutter-in {
+  animation: stutterIn 0.6s steps(5) both;
+}
+
+/* ========== PAGE LOAD FLICKER ========== */
+@keyframes pageFlicker {
+  0% {
+    opacity: 1;
+    filter: none;
+  }
+
+  5% {
+    opacity: 0.3;
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  10% {
+    opacity: 1;
+    filter: none;
+  }
+
+  12% {
+    opacity: 0.6;
+    filter: brightness(2) contrast(2);
+  }
+
+  15% {
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 1;
+    filter: hue-rotate(90deg);
+  }
+
+  22% {
+    opacity: 0.8;
+    filter: none;
+  }
+
+  25% {
+    opacity: 0.1;
+    filter: invert(1);
+  }
+
+  30% {
+    opacity: 1;
+    filter: none;
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+.page-flicker {
+  animation: pageFlicker 0.8s steps(8) forwards;
+}
+
+/* ========== SPEED LINES ========== */
+@keyframes speedLinesConverge {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+}
+
+.speed-lines {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(232, 0, 61, 0.08) 1deg,
+      transparent 2deg);
+  animation: speedLinesConverge 2s ease-out forwards;
+  pointer-events: none;
+}
+
+/* ========== PULSE GLOW ========== */
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(232, 0, 61, 0.4), 0 0 40px rgba(232, 0, 61, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(232, 0, 61, 0.6), 0 0 60px rgba(232, 0, 61, 0.3);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* ========== INK SPLAT ========== */
+@keyframes inkSplat {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.ink-splat::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(ellipse at center,
+      rgba(232, 0, 61, 0.4) 0%,
+      rgba(232, 0, 61, 0.1) 40%,
+      transparent 70%);
+  border-radius: 50%;
+  transform: scale(0);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ink-splat:hover::after {
+  animation: inkSplat 0.6s ease-out forwards;
+}
+
+/* ========== TYPEWRITER ========== */
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinkCursor {
+
+  0%,
+  100% {
+    border-color: var(--accent);
+  }
+
+  50% {
+    border-color: transparent;
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--accent);
+  width: 0;
+  animation:
+    typewriter 3s steps(40) 1s forwards,
+    blinkCursor 0.8s step-end infinite;
+}
+
+/* ========== WOBBLE ========== */
+@keyframes wobble {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(8deg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+.wobble-hover:hover {
+  animation: wobble 0.5s ease-in-out;
+}
+
+/* ========== STARBURST SPIN ========== */
+@keyframes starburstSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.starburst-spin {
+  animation: starburstSpin 20s linear infinite;
+}
+
+/* ========== SPEECH BUBBLE ========== */
+.speech-bubble {
+  position: relative;
+  background: var(--surface);
+  border: 3px solid var(--ink-light);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 24px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--ink-light);
+}
+
+.thought-bubble {
+  position: relative;
+  background: var(--surface);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff1a50;
+}
+
+/* ========== SELECTION ========== */
+::selection {
+  background: var(--accent);
+  color: var(--text);
 }
