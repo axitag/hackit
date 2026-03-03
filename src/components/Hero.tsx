@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import GlitchText from "./GlitchText";
+import GlitchSubtext from "./GlitchSubtext";
 
 const floatingWords = [
     { text: "CODE!", x: "10%", y: "20%", rotate: -15, delay: 0 },
@@ -111,8 +112,9 @@ export default function Hero() {
 
             {/* Main content */}
             <div className="relative z-10 text-center px-4">
-                {/* Title */}
+                {/* Title + Tagline container */}
                 <motion.div
+                    className="inline-flex flex-col"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
@@ -126,11 +128,19 @@ export default function Hero() {
                             HACK IT
                         </span>
                     </GlitchText>
+
+                    {/* Subtext — right half of HACK IT */}
+                    <div className="self-end w-[55%] pr-[2%] -mt-1 md:-mt-2">
+                        <GlitchSubtext
+                            text="IDEA, CREATIVITY, INNOVATIONS"
+                            className="font-display text-[0.4rem] sm:text-[0.5rem] md:text-xs lg:text-sm text-white tracking-[0.2em] md:tracking-[0.3em] w-full text-right"
+                        />
+                    </div>
                 </motion.div>
 
                 {/* Subtitle */}
                 <motion.div
-                    className="mt-6 md:mt-8"
+                    className="mt-4 md:mt-6"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
