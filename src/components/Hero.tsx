@@ -15,12 +15,12 @@ export default function Hero() {
     return (
         <section
             id="hero"
-            className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
+            className="snap-section relative w-full flex flex-col items-center justify-center overflow-hidden"
         >
             {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/hero-bg.png"
+                    src="/images/hero-bg2.png"
                     alt="Noir halftone hero background"
                     fill
                     className="object-cover opacity-30"
@@ -31,7 +31,7 @@ export default function Hero() {
 
             {/* Spider web SVG */}
             <svg
-                className="absolute top-0 right-0 w-[400px] h-[400px] opacity-10"
+                className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] opacity-10"
                 viewBox="0 0 400 400"
                 fill="none"
                 aria-hidden="true"
@@ -90,7 +90,7 @@ export default function Hero() {
             {floatingWords.map((word) => (
                 <motion.span
                     key={word.text}
-                    className="absolute font-display text-6xl md:text-8xl text-white pointer-events-none select-none"
+                    className="absolute font-display text-4xl md:text-6xl lg:text-8xl text-white pointer-events-none select-none"
                     style={{
                         left: word.x,
                         top: word.y,
@@ -120,7 +120,7 @@ export default function Hero() {
                     <GlitchText
                         as="h1"
                         persistent
-                        className="font-display text-7xl md:text-[10rem] lg:text-[12rem] leading-none text-white tracking-wider"
+                        className="font-display text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] leading-none text-white tracking-wider"
                     >
                         <span style={{ display: "inline-block", transform: "rotate(-2deg)" }}>
                             HACK IT
@@ -136,7 +136,7 @@ export default function Hero() {
                     transition={{ delay: 0.8 }}
                 >
                     <p
-                        className="font-body text-lg md:text-2xl text-[var(--text)] typewriter inline-block"
+                        className="font-body text-base sm:text-lg md:text-2xl text-[var(--text)] typewriter inline-block"
                     >
                         Break the code. Break the multiverse.
                     </p>
@@ -144,13 +144,13 @@ export default function Hero() {
 
                 {/* CTA Button */}
                 <motion.div
-                    className="mt-10 md:mt-12"
+                    className="mt-6 sm:mt-10 md:mt-12"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.2, duration: 0.5 }}
                 >
                     <button
-                        className="relative font-display text-xl md:text-2xl bg-[var(--accent)] text-white px-10 py-4 md:px-14 md:py-5 tracking-wider pulse-glow ink-splat transition-transform hover:scale-105 active:scale-95"
+                        className="relative font-display text-lg sm:text-xl md:text-2xl bg-[var(--accent)] text-white px-8 py-3 sm:px-10 sm:py-4 md:px-14 md:py-5 tracking-wider pulse-glow ink-splat transition-transform hover:scale-105 active:scale-95"
                         style={{
                             clipPath:
                                 "polygon(2% 0%, 98% 2%, 100% 96%, 3% 100%)",

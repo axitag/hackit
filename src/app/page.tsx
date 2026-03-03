@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={!flickerDone ? "page-flicker" : ""}>
+    <main className={`snap-container ${!flickerDone ? "page-flicker" : ""}`}>
       <Hero />
       <About />
       <Tracks />

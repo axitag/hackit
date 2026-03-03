@@ -8,6 +8,7 @@ interface GlitchTextProps {
     className?: string;
     as?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
     persistent?: boolean;
+    animated?: boolean;
 }
 
 export default function GlitchText({
@@ -15,6 +16,7 @@ export default function GlitchText({
     className = "",
     as: Tag = "span",
     persistent = false,
+    animated = false,
 }: GlitchTextProps) {
     return (
         <motion.div
@@ -56,7 +58,7 @@ export default function GlitchText({
             </Tag>
             {/* Main text */}
             <Tag
-                className={`relative ${persistent ? "glitch-text" : "glitch-hover"} ${className}`}
+                className={`relative ${animated ? "glitch-text-animated" : persistent ? "glitch-text" : "glitch-hover"} ${className}`}
             >
                 {children}
             </Tag>

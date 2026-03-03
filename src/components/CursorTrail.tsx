@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Point {
     x: number;
@@ -13,8 +13,25 @@ export default function CursorTrail() {
     const pointsRef = useRef<Point[]>([]);
     const mouseRef = useRef({ x: 0, y: 0 });
     const animRef = useRef<number>(0);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        // Hide on touch devices / small screens
+        const checkMobile = () => {
+            setIsMobile(
+                window.matchMedia("(pointer: coarse)").matches ||
+                window.innerWidth < 768
+            );
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    useEffect(() => {
+        if (isMobile) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -58,16 +75,13 @@ export default function CursorTrail() {
                 ctx.stroke();
             }
 
-            // Remove dead points
             pointsRef.current = points.filter((p) => p.age < 1);
 
-            // Draw cursor dot
             ctx.beginPath();
             ctx.arc(mouseRef.current.x, mouseRef.current.y, 4, 0, Math.PI * 2);
             ctx.fillStyle = "#E8003D";
             ctx.fill();
 
-            // Outer ring
             ctx.beginPath();
             ctx.arc(mouseRef.current.x, mouseRef.current.y, 8, 0, Math.PI * 2);
             ctx.strokeStyle = "rgba(232, 0, 61, 0.4)";
@@ -83,7 +97,9 @@ export default function CursorTrail() {
             window.removeEventListener("mousemove", onMouseMove);
             cancelAnimationFrame(animRef.current);
         };
-    }, []);
+    }, [isMobile]);
+
+    if (isMobile) return null;
 
     return (
         <canvas

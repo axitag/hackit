@@ -14,7 +14,7 @@ export default function RegisterCTA() {
     return (
         <section
             id="register"
-            className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden px-4"
+            className="snap-section w-full flex flex-col items-center justify-center overflow-hidden px-4"
         >
             {/* Animated speed lines */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -60,8 +60,7 @@ export default function RegisterCTA() {
                 >
                     <GlitchText
                         as="h2"
-                        persistent
-                        className="font-display text-5xl md:text-7xl lg:text-8xl text-[var(--accent)] tracking-wider leading-tight"
+                        className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-[var(--accent)] tracking-wider leading-tight"
                     >
                         YOUR TIMELINE STARTS NOW
                     </GlitchText>

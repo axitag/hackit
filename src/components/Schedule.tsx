@@ -16,11 +16,11 @@ const events = [
 
 export default function Schedule() {
     return (
-        <section id="schedule" className="relative py-24 md:py-32 px-4 md:px-8">
-            <div className="text-center mb-16 md:mb-20">
+        <section id="schedule" className="snap-section px-4 md:px-8">
+            <div className="text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"
-                    className="font-display text-5xl md:text-7xl text-white tracking-wider"
+                    className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
                 >
                     THE TIMELINE
                 </GlitchText>
@@ -56,8 +56,8 @@ export default function Schedule() {
                         )}
 
                         {/* Time column */}
-                        <div className="w-[140px] md:w-[160px] flex-shrink-0 p-4 md:p-5 flex items-center">
-                            <span className="font-display text-sm md:text-base text-[var(--accent)] whitespace-nowrap">
+                        <div className="w-[100px] sm:w-[140px] md:w-[160px] flex-shrink-0 p-2 sm:p-4 md:p-5 flex items-center">
+                            <span className="font-display text-[10px] sm:text-sm md:text-base text-[var(--accent)] whitespace-nowrap">
                                 {event.time}
                             </span>
                         </div>
@@ -77,9 +77,9 @@ export default function Schedule() {
                             className={`flex-1 p-4 md:p-5 flex items-center gap-3 ${event.highlight ? "border-l-[3px] border-[var(--accent)]" : ""
                                 }`}
                         >
-                            <span className="text-xl md:text-2xl">{event.icon}</span>
+                            <span className="text-base sm:text-xl md:text-2xl">{event.icon}</span>
                             <span
-                                className={`font-body text-base md:text-lg ${event.highlight ? "text-white font-bold" : "text-white/70"
+                                className={`font-body text-sm sm:text-base md:text-lg ${event.highlight ? "text-white font-bold" : "text-white/70"
                                     }`}
                             >
                                 {event.name}

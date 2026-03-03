@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="relative bg-[var(--bg)] border-t-[3px] border-[var(--ink-dark)] py-8 px-4">
+        <footer className="snap-footer bg-[var(--bg)] border-t-[3px] border-[var(--ink-dark)] py-8 px-4">
             {/* Spider web corner SVG */}
             <svg
                 className="absolute bottom-0 right-0 w-[120px] h-[120px] opacity-10"

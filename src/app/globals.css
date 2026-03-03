@@ -38,6 +38,71 @@ body {
   cursor: none;
 }
 
+/* Restore cursor on touch/mobile devices */
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ========== SNAP SCROLL ========== */
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.snap-section-auto {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Footer snap - smaller */
+.snap-footer {
+  scroll-snap-align: end;
+  position: relative;
+}
+
+/* Mobile: relax snap and let sections auto-size */
+@media (max-width: 768px) {
+  .snap-container {
+    scroll-snap-type: y proximity;
+  }
+
+  .snap-section,
+  .snap-section-auto {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
 /* ========== FONT CLASSES ========== */
 .font-display {
   font-family: var(--font-display);
@@ -82,6 +147,46 @@ body {
   text-shadow:
     -2px 0 var(--glitch-cyan),
     2px 0 var(--glitch-magenta);
+}
+
+.glitch-text-animated {
+  animation: glitchLoop 3s steps(6) infinite;
+}
+
+@keyframes glitchLoop {
+
+  0%,
+  70%,
+  100% {
+    text-shadow: -2px 0 var(--glitch-cyan), 2px 0 var(--glitch-magenta);
+  }
+
+  72% {
+    text-shadow: 5px 0 var(--glitch-cyan), -5px 0 var(--glitch-magenta);
+  }
+
+  74% {
+    text-shadow: -3px 2px var(--glitch-cyan), 3px -2px var(--glitch-magenta);
+  }
+
+  76% {
+    text-shadow: 4px -1px var(--glitch-cyan), -4px 1px var(--glitch-magenta);
+  }
+
+  78% {
+    text-shadow: -2px 0 var(--glitch-cyan), 2px 0 var(--glitch-magenta);
+    transform: translateX(3px);
+  }
+
+  80% {
+    text-shadow: 3px 1px var(--glitch-cyan), -3px -1px var(--glitch-magenta);
+    transform: translateX(-2px);
+  }
+
+  82% {
+    text-shadow: -2px 0 var(--glitch-cyan), 2px 0 var(--glitch-magenta);
+    transform: translateX(0);
+  }
 }
 
 .glitch-text-subtle {

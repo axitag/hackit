@@ -27,19 +27,19 @@ const panels = [
 
 export default function About() {
     return (
-        <section id="about" className="relative py-24 md:py-32 px-4 md:px-8">
+        <section id="about" className="snap-section px-4 md:px-8">
             {/* Section Title */}
-            <div className="text-center mb-16 md:mb-20">
+            <div className="text-center mb-8 md:mb-16">
                 <GlitchText
                     as="h2"
-                    className="font-display text-5xl md:text-7xl text-white tracking-wider"
+                    className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
                 >
                     THE ORIGIN STORY
                 </GlitchText>
             </div>
 
             {/* Panels */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6" style={{ maxWidth: '72rem', margin: '0 auto', width: '100%' }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" style={{ maxWidth: '72rem', margin: '0 auto', width: '100%' }}>
                 {panels.map((panel, i) => (
                     <div key={panel.number} className="relative">
                         {/* Ink splatter behind panel */}

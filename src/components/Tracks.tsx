@@ -7,29 +7,29 @@ import GlitchText from "./GlitchText";
 const tracks = [
     {
         issue: "#001",
-        title: "THE ALGORITHM",
-        category: "AI / ML",
+        title: "AI / ML",
+        // category: "AI / ML",
         tagline: "Cold. Calculated. Unstoppable.",
         image: "/images/track-algorithm.png",
     },
     {
         issue: "#002",
-        title: "THE ORIGIN STORY",
-        category: "EdTech",
+        title: "EdTech",
+        // category: "EdTech",
         tagline: "Knowledge is the only superpower.",
         image: "/images/track-origin.png",
     },
     {
         issue: "#003",
-        title: "INTO THE SHADOWS",
-        category: "Cybersecurity",
+        title: "Cybersecurity",
+        // category: "Cybersecurity",
         tagline: "In the dark, truth hides.",
         image: "/images/track-shadows.png",
     },
     {
         issue: "#004",
-        title: "ANY DIMENSION",
-        category: "Open Innovation",
+        title: "Open Innovation",
+        // category: "Open Innovation",
         tagline: "No rules. No limits. No mercy.",
         image: "/images/track-dimension.png",
     },
@@ -37,17 +37,17 @@ const tracks = [
 
 export default function Tracks() {
     return (
-        <section id="tracks" className="relative py-24 md:py-32 px-4 md:px-8">
-            <div className="text-center mb-16 md:mb-20">
+        <section id="tracks" className="snap-section px-4 md:px-8">
+            <div className="text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"
-                    className="font-display text-5xl md:text-7xl text-white tracking-wider"
+                    className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
                 >
                     CHOOSE YOUR TIMELINE
                 </GlitchText>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" style={{ maxWidth: '80rem', margin: '0 auto', width: '100%' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" style={{ maxWidth: '80rem', margin: '0 auto', width: '100%' }}>
                 {tracks.map((track, i) => (
                     <motion.div
                         key={track.issue}
@@ -76,10 +76,10 @@ export default function Tracks() {
                             </div>
 
                             {/* Image */}
-                            <div className="relative w-full aspect-[3/4] overflow-hidden">
+                            <div className="relative w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden">
                                 <Image
                                     src={track.image}
-                                    alt={`${track.title} - ${track.category} track`}
+                                    alt={`${track.title} track`}
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
@@ -88,9 +88,9 @@ export default function Tracks() {
 
                             {/* Content */}
                             <div className="p-5 md:p-6">
-                                <span className="font-label text-xs text-[var(--accent)] tracking-widest uppercase">
+                                {/* <span className="font-label text-xs text-[var(--accent)] tracking-widest uppercase">
                                     {track.category}
-                                </span>
+                                </span> */}
                                 <h3 className="font-display text-2xl md:text-3xl text-white mt-2 mb-2 glitch-hover">
                                     {track.title}
                                 </h3>

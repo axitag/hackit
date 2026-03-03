@@ -63,11 +63,11 @@ function StarburstSVG({ points, color }: { points: number; color: string }) {
 
 export default function Prizes() {
     return (
-        <section id="prizes" className="relative py-24 md:py-32 px-4 md:px-8">
-            <div className="text-center mb-16 md:mb-20">
+        <section id="prizes" className="snap-section px-4 md:px-8">
+            <div className="text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"
-                    className="font-display text-5xl md:text-7xl text-white tracking-wider"
+                    className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
                 >
                     THE LOOT
                 </GlitchText>
