@@ -16,7 +16,7 @@ const events = [
 
 export default function Schedule() {
     return (
-        <section id="schedule" className="snap-section px-4 md:px-8">
+        <section id="schedule" className="snap-section px-6 md:px-12 lg:px-16">
             <div className="text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"

@@ -37,7 +37,7 @@ const tracks = [
 
 export default function Tracks() {
     return (
-        <section id="tracks" className="snap-section px-4 md:px-8">
+        <section id="tracks" className="snap-section px-6 md:px-12 lg:px-16">
             <div className="text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"

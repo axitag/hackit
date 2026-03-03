@@ -160,7 +160,7 @@ function JudgeCard({
 
 export default function Judges() {
     return (
-        <section id="judges" className="snap-section-auto px-4 md:px-8 py-12">
+        <section id="judges" className="snap-section-auto px-6 md:px-12 lg:px-16 py-12">
             <div className="text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"

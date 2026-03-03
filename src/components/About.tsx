@@ -27,7 +27,7 @@ const panels = [
 
 export default function About() {
     return (
-        <section id="about" className="snap-section px-4 md:px-8">
+        <section id="about" className="snap-section px-6 md:px-12 lg:px-16">
             {/* Section Title */}
             <div className="text-center mb-8 md:mb-16">
                 <GlitchText
@@ -59,11 +59,6 @@ export default function About() {
                         </motion.div>
 
                         <ComicPanel rotate={panel.rotate} delay={i * 0.15} className="p-6 md:p-8 relative">
-                            {/* Panel number */}
-                            <span className="absolute top-3 left-3 font-display text-sm text-[var(--accent)] opacity-70">
-                                PANEL {panel.number}
-                            </span>
-
                             <h3 className="font-display text-3xl md:text-4xl text-[var(--accent)] mt-6 mb-4">
                                 {panel.title}
                             </h3>

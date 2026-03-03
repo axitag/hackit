@@ -58,7 +58,7 @@ export default function GlitchText({
             </Tag>
             {/* Main text */}
             <Tag
-                className={`relative ${animated ? "glitch-text-animated" : persistent ? "glitch-text" : "glitch-hover"} ${className}`}
+                className={`relative glitch-text-animated ${className}`}
             >
                 {children}
             </Tag>

@@ -63,7 +63,7 @@ function StarburstSVG({ points, color }: { points: number; color: string }) {
 
 export default function Prizes() {
     return (
-        <section id="prizes" className="snap-section px-4 md:px-8">
+        <section id="prizes" className="snap-section px-6 md:px-12 lg:px-16">
             <div className="text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"

@@ -35,7 +35,7 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <section id="faq" className="snap-section px-4 md:px-8">
+        <section id="faq" className="snap-section px-6 md:px-12 lg:px-16">
             <div className="text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"
