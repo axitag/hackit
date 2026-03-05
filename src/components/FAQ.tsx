@@ -3,31 +3,44 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GlitchText from "./GlitchText";
+import Link from "next/link";
 
 const faqs = [
     {
-        q: "Who can participate?",
-        a: "Anyone. Any skill level. Any timeline. If you can dream it, you belong here.",
+        question: "What is HACKIT 26?",
+        answer: "HACKIT 26 is a groundbreaking hackathon at Amity University Patna, bringing together tech enthusiasts to innovate and solve real-world challenges in Web and App Development, AI/ML, Cybersecurity, IoT, and more.",
     },
     {
-        q: "Is it free?",
-        a: "Yes. Always. No entry fee across any dimension.",
+        question: "Who can participate in HACKIT 26?",
+        answer: "HACKIT 26 is open to students and tech enthusiasts from all backgrounds. Anyone passionate about coding and problem-solving can participate.",
     },
     {
-        q: "Do I need a team?",
-        a: "Solo or squads up to 4. Lone wolves and packs both welcome.",
+        question: "Where and when will HACKIT 26 take place?",
+        answer: "HACKIT 26 will be held at AMITY UNIVERSITY PATNA, Bihar. 2 Days Hackathon. 27th-28th March 2026.",
     },
     {
-        q: "What do I need to bring?",
-        a: "Laptop, ideas, and a will to hack. Everything else is provided.",
+        question: "Is there a registration fee?",
+        answer: "Yes, registration for HACKIT 26 is not free. There is a registration fee of ₹500 per team. Selected teams must confirm their participation before the event.",
     },
     {
-        q: "Will there be food?",
-        a: "Fuel provided. Timelines permitting. We keep hackers fed and caffeinated.",
+        question: "Can I participate alone or do I need a team?",
+        answer: "HACKIT 26 is a team-based hackathon. Teams can have 2-4 members.",
     },
     {
-        q: "How are projects judged?",
-        a: "Innovation, impact, execution. In that order. Blow our minds.",
+        question: "How can I contact the organizers?",
+        answer: (
+            <>
+                You can contact us at{" "}
+                <Link
+                    href="mailto:asset.aikyam@gmail.com"
+                    className="text-white hover:text-white underline transition-colors"
+                    target="_blank"
+                >
+                    asset.aikyam@gmail.com
+                </Link>
+                {" "}or via phone.
+            </>
+        ),
     },
 ];
 
@@ -67,7 +80,7 @@ export default function FAQ() {
                                     ?
                                 </span>
                                 <span className="font-display text-lg md:text-xl text-white">
-                                    {faq.q}
+                                    {faq.question}
                                 </span>
                                 <motion.span
                                     className="ml-auto text-[var(--accent)] font-display text-xl flex-shrink-0"
@@ -96,7 +109,7 @@ export default function FAQ() {
                                         }}
                                     >
                                         <p className="font-body text-sm md:text-base text-white/70 leading-relaxed">
-                                            {faq.a}
+                                            {faq.answer}
                                         </p>
                                     </div>
                                 </motion.div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import GlitchText from "./GlitchText";
 import GlitchSubtext from "./GlitchSubtext";
+import GlitchImage from "./GlitchImage";
 
 const floatingWords = [
     { text: "CODE!", x: "10%", y: "20%", rotate: -15, delay: 0 },
@@ -110,16 +111,27 @@ export default function Hero() {
                 </motion.span>
             ))}
 
+            {/* Upper-left logo — akiyam (moved below HackIT logo, no glitch) */}
+
+            {/* Upper-right logo — bg_remove_logo */}
+            <GlitchImage
+                src="/images/amity_bg_2.png"
+                alt="Amity logo"
+                width={200}
+                height={200}
+                className="absolute top-4 right-0 md:top-6 md:right-8 w-[80px] h-[80px] md:w-[140px] md:h-[140px] lg:w-[180px] lg:h-[180px] z-10 opacity-80"
+            />
+
             {/* Main content */}
             <div className="relative z-10 text-center px-4">
                 {/* Title + Tagline container */}
                 <motion.div
-                    className="inline-flex flex-col"
+                    className="inline-flex flex-col items-center"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <GlitchText
+                    {/* <GlitchText
                         as="h1"
                         persistent
                         className="font-display text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] leading-none text-white tracking-wider"
@@ -127,19 +139,36 @@ export default function Hero() {
                         <span style={{ display: "inline-block", transform: "rotate(-2deg)" }}>
                             HACK IT
                         </span>
-                    </GlitchText>
+                    </GlitchText> */}
 
-                    {/* Subtext — right half of HACK IT */}
-                    <div className="self-end w-[55%] pr-[2%] -mt-1 md:-mt-2">
+                    {/* HACK IT logo image */}
+                    <GlitchImage
+                        src="/images/hackit_logo_2.png"
+                        alt="HACK IT logo"
+                        width={800}
+                        height={400}
+                        className="w-[280px] sm:w-[400px] md:w-[600px] lg:w-[800px] h-auto"
+                    />
+
+                    {/* Akiyam logo — below HackIT logo */}
+                    <Image
+                        src="/images/akiyam.png"
+                        alt="Akiyam logo"
+                        width={300}
+                        height={300}
+                        className="w-[200px] md:w-[280px] lg:w-[360px] h-auto mt-10 md:mt-12 opacity-80 mb-10"
+                    />
+
+                    {/* <div className="self-end w-[55%] pr-[2%] -mt-1 md:-mt-2">
                         <GlitchSubtext
                             text="IDEA, CREATIVITY, INNOVATIONS"
                             className="font-display text-[0.4rem] sm:text-[0.5rem] md:text-xs lg:text-sm text-white tracking-[0.2em] md:tracking-[0.3em] w-full text-right"
                         />
-                    </div>
+                    </div> */}
                 </motion.div>
 
                 {/* Subtitle */}
-                <motion.div
+                {/* <motion.div
                     className="mt-4 md:mt-6"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -150,11 +179,11 @@ export default function Hero() {
                     >
                         Break the code. Break the multiverse.
                     </p>
-                </motion.div>
+                </motion.div> */}
 
                 {/* CTA Button */}
                 <motion.div
-                    className="mt-6 sm:mt-10 md:mt-12"
+                    className="mt-10 sm:mt-14 md:mt-16"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.2, duration: 0.5 }}
@@ -166,7 +195,7 @@ export default function Hero() {
                                 "polygon(2% 0%, 98% 2%, 100% 96%, 3% 100%)",
                         }}
                     >
-                        ENTER THE WEB
+                        Break the code. Break the multiverse.
                     </button>
                 </motion.div>
 

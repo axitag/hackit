@@ -21,7 +21,7 @@ export default function GlitchSubtext({ text, className = "" }: GlitchSubtextPro
                 style={{
                     color: "var(--glitch-cyan)",
                     opacity: 0.6,
-                    transform: "translateX(-2px)",
+                    transform: "translateX(-3px)",
                     zIndex: -1,
                 }}
                 aria-hidden
@@ -34,7 +34,7 @@ export default function GlitchSubtext({ text, className = "" }: GlitchSubtextPro
                 style={{
                     color: "var(--glitch-magenta)",
                     opacity: 0.6,
-                    transform: "translateX(2px)",
+                    transform: "translateX(3px)",
                     zIndex: -1,
                 }}
                 aria-hidden

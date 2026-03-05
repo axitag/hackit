@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import GlitchText from "./GlitchText";
 
 const events = [
@@ -16,8 +17,19 @@ const events = [
 
 export default function Schedule() {
     return (
-        <section id="schedule" className="snap-section px-6 md:px-12 lg:px-16">
-            <div className="text-center mb-6 md:mb-16">
+        <section id="schedule" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden">
+            {/* Background image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/images/timeline_bg.png"
+                    alt="Timeline section background"
+                    fill
+                    className="object-cover opacity-20"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
+            </div>
+
+            <div className="relative z-10 text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"
                     className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
@@ -26,7 +38,7 @@ export default function Schedule() {
                 </GlitchText>
             </div>
 
-            <div className="relative" style={{ maxWidth: '48rem', margin: '0 auto', width: '100%' }}>
+            <div className="relative z-10" style={{ maxWidth: '72rem', margin: '0 auto', width: '100%' }}>
                 {/* Vertical line */}
                 <div className="absolute left-[20px] md:left-[140px] top-0 bottom-0 w-[3px] bg-[var(--accent)] opacity-30" />
 
@@ -56,8 +68,8 @@ export default function Schedule() {
                         )}
 
                         {/* Time column */}
-                        <div className="w-[100px] sm:w-[140px] md:w-[160px] flex-shrink-0 p-2 sm:p-4 md:p-5 flex items-center">
-                            <span className="font-display text-[10px] sm:text-sm md:text-base text-[var(--accent)] whitespace-nowrap">
+                        <div className="w-[110px] sm:w-[160px] md:w-[220px] flex-shrink-0 p-3 sm:p-5 md:p-6 flex items-center">
+                            <span className="font-display text-[11px] sm:text-base md:text-lg text-[var(--accent)] whitespace-nowrap">
                                 {event.time}
                             </span>
                         </div>
@@ -74,12 +86,12 @@ export default function Schedule() {
 
                         {/* Event name */}
                         <div
-                            className={`flex-1 p-4 md:p-5 flex items-center gap-3 ${event.highlight ? "border-l-[3px] border-[var(--accent)]" : ""
+                            className={`flex-1 p-4 md:p-6 flex items-center gap-4 ${event.highlight ? "border-l-[3px] border-[var(--accent)]" : ""
                                 }`}
                         >
-                            <span className="text-base sm:text-xl md:text-2xl">{event.icon}</span>
+                            <span className="text-lg sm:text-2xl md:text-3xl">{event.icon}</span>
                             <span
-                                className={`font-body text-sm sm:text-base md:text-lg ${event.highlight ? "text-white font-bold" : "text-white/70"
+                                className={`font-body text-base sm:text-lg md:text-xl ${event.highlight ? "text-white font-bold" : "text-white/70"
                                     }`}
                             >
                                 {event.name}

@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import GlitchText from "./GlitchText";
 
 const prizes = [
     {
         place: "1ST",
         label: "GRAND PRIZE",
-        amount: "$5,000",
+        amount: "₹5,000",
         color: "#E8003D",
         bgColor: "rgba(232,0,61,0.15)",
         scale: 1,
@@ -17,7 +18,7 @@ const prizes = [
     {
         place: "2ND",
         label: "RUNNER UP",
-        amount: "$2,500",
+        amount: "₹2,500",
         color: "#aaaaaa",
         bgColor: "rgba(170,170,170,0.1)",
         scale: 0.85,
@@ -27,7 +28,7 @@ const prizes = [
     {
         place: "3RD",
         label: "THIRD PLACE",
-        amount: "$1,000",
+        amount: "₹1,000",
         color: "#cd7f32",
         bgColor: "rgba(205,127,50,0.1)",
         scale: 0.75,
@@ -43,8 +44,8 @@ function StarburstSVG({ points, color }: { points: number; color: string }) {
     for (let i = 0; i < points * 2; i++) {
         const angle = (Math.PI * i) / points - Math.PI / 2;
         const r = i % 2 === 0 ? outerR : innerR;
-        const x = 150 + r * Math.cos(angle);
-        const y = 150 + r * Math.sin(angle);
+        const x = Math.round((150 + r * Math.cos(angle)) * 100) / 100;
+        const y = Math.round((150 + r * Math.sin(angle)) * 100) / 100;
         pathParts.push(`${i === 0 ? "M" : "L"}${x},${y}`);
     }
     pathParts.push("Z");
@@ -63,8 +64,19 @@ function StarburstSVG({ points, color }: { points: number; color: string }) {
 
 export default function Prizes() {
     return (
-        <section id="prizes" className="snap-section px-6 md:px-12 lg:px-16">
-            <div className="text-center mb-6 md:mb-16">
+        <section id="prizes" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden">
+            {/* Background image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/images/loot_bg.png"
+                    alt="Loot section background"
+                    fill
+                    className="object-cover opacity-20"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
+            </div>
+
+            <div className="relative z-10 text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"
                     className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
@@ -73,7 +85,7 @@ export default function Prizes() {
                 </GlitchText>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-end" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-end" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
                 {prizes.map((prize, i) => (
                     <motion.div
                         key={prize.place}

@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import GlitchText from "./GlitchText";
+
+const stats = [
+    { label: "HOURS", value: "48" },
+    { label: "TRACKS", value: "04" },
+    { label: "PRIZES", value: "₹8.5K+" },
+];
 
 const socials = [
     { name: "Twitter/X", icon: "𝕏", href: "#" },
@@ -14,79 +21,103 @@ export default function RegisterCTA() {
     return (
         <section
             id="register"
-            className="snap-section w-full flex flex-col items-center justify-center overflow-hidden px-4"
+            className="snap-section relative w-full flex flex-col items-center justify-center overflow-hidden px-6 md:px-12"
         >
-            {/* Animated speed lines */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {/* Converging lines from edges */}
+            {/* Background image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/images/footer_bg.png"
+                    alt="Register section background"
+                    fill
+                    className="object-contain opacity-40"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-[var(--bg)]/80" />
+                {/* Dark vignette overlay */}
                 <div
                     className="absolute inset-0"
                     style={{
-                        background: `
-              repeating-conic-gradient(
-                from 0deg at 50% 50%,
-                transparent 0deg,
-                rgba(232,0,61,0.06) 0.5deg,
-                transparent 1.5deg
-              )
-            `,
-                    }}
-                />
-                {/* Animated radial pulse */}
-                <motion.div
-                    className="absolute inset-0"
-                    style={{
-                        background: "radial-gradient(ellipse at center, transparent 30%, rgba(232,0,61,0.05) 70%, transparent 100%)",
-                    }}
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 1, 0.5],
-                    }}
-                    transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
+                        background: "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%)",
                     }}
                 />
             </div>
 
-            <div className="relative z-10 text-center max-w-4xl mx-auto">
-                {/* Main CTA text */}
+            <div className="relative z-10 text-center flex flex-col items-center justify-center max-w-5xl mx-auto w-full">
+                {/* Tagline */}
+                <motion.p
+                    className="font-label text-xs md:text-sm text-[var(--accent)] tracking-[0.35em] mb-4 md:mb-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
+                    ARE YOU READY?
+                </motion.p>
+
+                {/* Main heading */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.85 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.6, ease: [0.22, 0.03, 0.26, 1] }}
                 >
                     <GlitchText
                         as="h2"
-                        className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-[var(--accent)] tracking-wider leading-tight"
+                        className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-white tracking-wider leading-tight"
                     >
-                        YOUR TIMELINE STARTS NOW
+                        JOIN THE HACKIT
                     </GlitchText>
                 </motion.div>
 
                 {/* Subtext */}
                 <motion.p
-                    className="mt-6 md:mt-8 font-body text-lg md:text-xl text-white/60"
+                    className="mt-4 md:mt-6 font-body text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
+                    transition={{ delay: 0.25, duration: 0.5 }}
                 >
-                    Register before your timeline collapses.
+                    48 hours. 4 tracks. Unlimited possibilities. Register now and be part of the premier hackathon at Amity University Patna.
                 </motion.p>
+
+                {/* Stats row */}
+                <motion.div
+                    className="mt-8 md:mt-12 flex items-center justify-center gap-8 md:gap-14"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.35, duration: 0.5 }}
+                >
+                    {stats.map((stat, i) => (
+                        <div key={i} className="text-center">
+                            <span className="font-display text-2xl sm:text-3xl md:text-4xl text-[var(--accent)] block">
+                                {stat.value}
+                            </span>
+                            <span className="font-label text-[10px] md:text-xs text-white/40 tracking-widest mt-1 block">
+                                {stat.label}
+                            </span>
+                        </div>
+                    ))}
+                </motion.div>
+
+                {/* Divider */}
+                <motion.div
+                    className="mt-8 md:mt-10 mx-auto w-24 h-[2px] bg-[var(--accent)] opacity-40"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                />
 
                 {/* Register button */}
                 <motion.div
-                    className="mt-10 md:mt-14"
+                    className="mt-8 md:mt-10"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5, duration: 0.5 }}
                 >
                     <button
-                        className="relative font-display text-2xl md:text-3xl bg-[var(--accent)] text-white px-12 py-5 md:px-16 md:py-6 tracking-wider pulse-glow ink-splat transition-transform hover:scale-105 active:scale-95"
+                        className="relative font-display text-xl sm:text-2xl md:text-3xl bg-[var(--accent)] text-white px-10 py-4 sm:px-14 sm:py-5 md:px-16 md:py-6 tracking-wider pulse-glow ink-splat transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(232,0,61,0.4)] active:scale-95"
                         style={{
                             clipPath: "polygon(1% 0%, 99% 3%, 100% 97%, 2% 100%)",
                         }}
@@ -97,22 +128,27 @@ export default function RegisterCTA() {
 
                 {/* Social links */}
                 <motion.div
-                    className="mt-12 flex items-center justify-center gap-4"
+                    className="mt-10 md:mt-14 flex flex-col items-center gap-4"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.7, duration: 0.5 }}
+                    transition={{ delay: 0.65, duration: 0.5 }}
                 >
-                    {socials.map((social) => (
-                        <a
-                            key={social.name}
-                            href={social.href}
-                            className="comic-border bg-[var(--surface)] w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-lg md:text-xl hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-colors duration-300"
-                            aria-label={social.name}
-                        >
-                            {social.icon}
-                        </a>
-                    ))}
+                    <span className="font-label text-[10px] md:text-xs text-white/30 tracking-[0.3em]">
+                        FOLLOW THE MULTIVERSE
+                    </span>
+                    <div className="flex items-center gap-3">
+                        {socials.map((social) => (
+                            <a
+                                key={social.name}
+                                href={social.href}
+                                className="comic-border bg-[var(--surface)] w-11 h-11 md:w-12 md:h-12 flex items-center justify-center text-base md:text-lg text-white/60 hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)] transition-all duration-300"
+                                aria-label={social.name}
+                            >
+                                {social.icon}
+                            </a>
+                        ))}
+                    </div>
                 </motion.div>
             </div>
         </section>
