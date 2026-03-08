@@ -19,7 +19,7 @@ export default function Footer() {
 
             <div className="max-w-6xl mx-auto text-center">
                 <p className="font-label text-xs md:text-sm text-white/30 tracking-widest">
-                    HackIt © 2025 — All timelines reserved.
+                    HackIt © 2026 — All timelines reserved.
                 </p>
             </div>
         </footer>

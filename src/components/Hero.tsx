@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import GlitchText from "./GlitchText";
 import GlitchSubtext from "./GlitchSubtext";
 import GlitchImage from "./GlitchImage";
@@ -14,11 +16,41 @@ const floatingWords = [
 ];
 
 export default function Hero() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
         <section
             id="hero"
             className="snap-section relative w-full flex flex-col items-center justify-center overflow-hidden"
         >
+            {/* Top-left Menu */}
+            <div className="absolute top-6 left-6 z-50">
+                <div className="relative">
+                    <button
+                        className="text-white p-2 hover:bg-white/10 rounded transition-colors group"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:stroke-[var(--accent)] transition-colors">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    {/* Dropdown Menu */}
+                    {isMenuOpen && (
+                        <div className="absolute left-0 top-full mt-2 bg-black/90 border border-white/20 min-w-[150px] backdrop-blur-sm comic-border p-2">
+                            <Link
+                                href="/teams"
+                                className="block px-4 py-3 text-white hover:bg-[var(--accent)] hover:text-white font-display tracking-wider transition-colors"
+                            >
+                                TEAM
+                            </Link>
+                        </div>
+                    )}
+                </div>
+            </div>
+
             {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image
@@ -114,13 +146,7 @@ export default function Hero() {
             {/* Upper-left logo — akiyam (moved below HackIT logo, no glitch) */}
 
             {/* Upper-right logo — bg_remove_logo */}
-            <GlitchImage
-                src="/images/amity_bg_2.png"
-                alt="Amity logo"
-                width={200}
-                height={200}
-                className="absolute top-4 right-0 md:top-6 md:right-8 w-[80px] h-[80px] md:w-[140px] md:h-[140px] lg:w-[180px] lg:h-[180px] z-10 opacity-80"
-            />
+
 
             {/* Main content */}
             <div className="relative z-10 text-center px-4">
@@ -149,15 +175,25 @@ export default function Hero() {
                         height={400}
                         className="w-[280px] sm:w-[400px] md:w-[600px] lg:w-[800px] h-auto"
                     />
+                    <div className="flex items-center">
 
-                    {/* Akiyam logo — below HackIT logo */}
-                    <Image
-                        src="/images/akiyam.png"
-                        alt="Akiyam logo"
-                        width={300}
-                        height={300}
-                        className="w-[200px] md:w-[280px] lg:w-[360px] h-auto mt-10 md:mt-12 opacity-80 mb-10"
-                    />
+                        {/* Akiyam logo — below HackIT logo */}
+                        <Image
+                            src="/images/akiyam.png"
+                            alt="Akiyam logo"
+                            width={300}
+                            height={300}
+                            className="w-[200px] md:w-[280px] lg:w-[360px] h-auto mt-10 md:mt-12 opacity-80 mb-10"
+                        />
+
+                        <GlitchImage
+                            src="/images/amity_bg_2.png"
+                            alt="Amity logo"
+                            width={200}
+                            height={200}
+                            className="w-[80px] h-[80px] md:w-[140px] md:h-[140px] lg:w-[180px] lg:h-[180px] z-10 opacity-80"
+                        />
+                    </div>
 
                     {/* <div className="self-end w-[55%] pr-[2%] -mt-1 md:-mt-2">
                         <GlitchSubtext
@@ -181,15 +217,18 @@ export default function Hero() {
                     </p>
                 </motion.div> */}
 
+            </div>
+
+            {/* Bottom Elements */}
+            <div className="absolute bottom-8 sm:bottom-12 w-full flex flex-col items-center z-20 px-4">
                 {/* CTA Button */}
                 <motion.div
-                    className="mt-10 sm:mt-14 md:mt-16"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.2, duration: 0.5 }}
                 >
                     <button
-                        className="relative font-display text-lg sm:text-xl md:text-2xl bg-[var(--accent)] text-white px-8 py-3 sm:px-10 sm:py-4 md:px-14 md:py-5 tracking-wider pulse-glow ink-splat transition-transform hover:scale-105 active:scale-95"
+                        className="relative font-display text-lg sm:text-xl md:text-2xl bg-[var(--accent)] text-white px-12 py-3 sm:px-10 sm:py-4 md:px-14 md:py-5 tracking-wider pulse-glow ink-splat transition-transform hover:scale-105 active:scale-95"
                         style={{
                             clipPath:
                                 "polygon(2% 0%, 98% 2%, 100% 96%, 3% 100%)",
@@ -201,7 +240,7 @@ export default function Hero() {
 
                 {/* Scroll label */}
                 <motion.p
-                    className="mt-8 font-label text-xs md:text-sm text-white/40 tracking-widest"
+                    className="mt-6 md:mt-8 font-label text-xs md:text-sm text-white/40 tracking-widest"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2 }}

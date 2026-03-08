@@ -9,6 +9,8 @@
   --surface: #111111;
   --text: #f0f0f0;
   --accent: #E8003D;
+  --accent-hover: #ff1a50;
+  --accent-glow: rgba(232, 0, 61, 0.4);
   --glitch-cyan: #00FFFF;
   --glitch-magenta: #FF00FF;
   --ink-dark: #1a1a1a;
@@ -17,6 +19,24 @@
   --font-display: 'Bangers', cursive;
   --font-body: 'Special Elite', cursive;
   --font-label: 'Courier Prime', monospace;
+
+  /* Border shorthands used by NoirTimeline components */
+  --border-standard: 3.5px solid #ffffff;
+  --border-accent: 3.5px solid #E8003D;
+  --border-radius-none: 0px;
+
+  /* Shadow shorthands */
+  --shadow-comic: 4px 4px 0 #1a1a1a;
+  --shadow-comic-inset: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-glow: 0 0 20px rgba(232, 0, 61, 0.4);
+  --shadow-glow-pulse: 0 0 12px rgba(232, 0, 61, 0.6);
+
+  /* Z-index scale */
+  --z-overlay: 100;
+
+  /* Animation timing */
+  --anim-dur-glitch: 4s;
+  --anim-step-medium: steps(6);
 }
 
 /* ========== BASE RESET ========== */
@@ -28,6 +48,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -39,16 +60,34 @@ body {
 }
 
 /* Restore cursor on touch/mobile devices */
-@media (pointer: coarse) {
+@media (pointer: coarse),
+(max-width: 768px) {
   body {
     cursor: auto;
   }
 }
 
-@media (max-width: 768px) {
-  body {
-    cursor: auto;
-  }
+::selection {
+  background: var(--accent);
+  color: var(--text);
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
 }
 
 /* ========== SNAP SCROLL ========== */
@@ -59,14 +98,11 @@ body {
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE/Edge */
 }
 
 .snap-container::-webkit-scrollbar {
   display: none;
-  /* Chrome/Safari */
 }
 
 .snap-section {
@@ -90,13 +126,11 @@ body {
   justify-content: center;
 }
 
-/* Footer snap - smaller */
 .snap-footer {
   scroll-snap-align: end;
   position: relative;
 }
 
-/* Mobile: relax snap and let sections auto-size */
 @media (max-width: 768px) {
   .snap-container {
     scroll-snap-type: y proximity;
@@ -152,17 +186,165 @@ body {
     0 0 20px rgba(232, 0, 61, 0.15);
 }
 
-/* ========== CHROMATIC ABERRATION / GLITCH ========== */
-.glitch-text {
-  text-shadow:
-    -2px 0 var(--glitch-cyan),
-    2px 0 var(--glitch-magenta);
+/* ========== SPEECH BUBBLE ========== */
+.speech-bubble {
+  position: relative;
+  background: var(--surface);
+  border: 3px solid var(--ink-light);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
 }
 
-.glitch-text-animated {
-  animation: glitchLoop 3s steps(6) infinite;
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 24px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--ink-light);
 }
 
+.thought-bubble {
+  position: relative;
+  background: var(--surface);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
+/* Stutter-in entry */
+@keyframes stutter-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) skewX(-2deg);
+  }
+
+  40% {
+    opacity: 0;
+    transform: translateY(8px) skewX(-2deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-2px) skewX(1deg);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateY(1px) skewX(-0.5deg);
+  }
+
+  80%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) skewX(0);
+  }
+}
+
+/* stutterIn — used by .stutter-in utility class */
+@keyframes stutterIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+
+  30% {
+    opacity: 0.4;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  60% {
+    opacity: 0.7;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  80% {
+    opacity: 0.9;
+    transform: translateY(3px) scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.stutter-in {
+  animation: stutterIn 0.6s steps(5) both;
+}
+
+/* Glitch-in for headings */
+@keyframes glitch-in {
+  0% {
+    text-shadow: none;
+    transform: skewX(0);
+  }
+
+  20% {
+    text-shadow: -3px 0 var(--glitch-cyan), 3px 0 var(--glitch-magenta);
+    transform: skewX(-4deg);
+  }
+
+  40% {
+    text-shadow: 3px 0 var(--glitch-cyan), -3px 0 var(--glitch-magenta);
+    transform: skewX(2deg);
+  }
+
+  60% {
+    text-shadow: -2px 0 var(--glitch-cyan), 2px 0 var(--glitch-magenta);
+    transform: skewX(0);
+  }
+
+  75% {
+    text-shadow: none;
+    transform: skewX(1deg);
+  }
+
+  100% {
+    text-shadow: none;
+    transform: skewX(0);
+  }
+}
+
+/* Glitch loop — triggers at ~75% so it feels rare */
+@keyframes glitch-loop {
+
+  0%,
+  70% {
+    text-shadow: none;
+    transform: skewX(0);
+  }
+
+  71% {
+    text-shadow: -3px 0 var(--glitch-cyan), 3px 0 var(--glitch-magenta);
+    transform: skewX(-3deg) translateX(2px);
+  }
+
+  73% {
+    text-shadow: 3px 0 var(--glitch-magenta), -3px 0 var(--glitch-cyan);
+    transform: skewX(2deg) translateX(-2px);
+  }
+
+  75% {
+    text-shadow: -2px 0 var(--glitch-cyan);
+    transform: skewX(0);
+  }
+
+  76%,
+  100% {
+    text-shadow: none;
+    transform: skewX(0);
+  }
+}
+
+/* glitchLoop — used by .glitch-text-animated */
 @keyframes glitchLoop {
 
   0%,
@@ -199,12 +381,6 @@ body {
   }
 }
 
-.glitch-text-subtle {
-  text-shadow:
-    -1px 0 var(--glitch-cyan),
-    1px 0 var(--glitch-magenta);
-}
-
 @keyframes glitchFlicker {
   0% {
     text-shadow: -2px 0 var(--glitch-cyan), 2px 0 var(--glitch-magenta);
@@ -231,43 +407,124 @@ body {
   }
 }
 
-.glitch-hover:hover {
-  animation: glitchFlicker 0.4s steps(5) forwards;
-}
-
-/* ========== STUTTER / SPIDER-VERSE 12fps ========== */
-@keyframes stutterIn {
+/* Slide-in */
+@keyframes slide-in-left {
   0% {
     opacity: 0;
-    transform: translateY(40px) scale(0.9);
+    transform: translateX(-40px);
   }
 
-  30% {
-    opacity: 0.4;
-    transform: translateY(20px) scale(0.95);
+  50% {
+    opacity: 0;
+    transform: translateX(-40px);
   }
 
   60% {
-    opacity: 0.7;
-    transform: translateY(10px) scale(0.98);
+    opacity: 1;
+    transform: translateX(4px);
   }
 
   80% {
-    opacity: 0.9;
-    transform: translateY(3px) scale(1);
+    opacity: 1;
+    transform: translateX(-2px);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateX(0);
   }
 }
 
-.stutter-in {
-  animation: stutterIn 0.6s steps(5) both;
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(-4px);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-/* ========== PAGE LOAD FLICKER ========== */
+/* Radar pulse */
+@keyframes radar-pulse {
+  0% {
+    r: 5;
+    opacity: 0.9;
+  }
+
+  100% {
+    r: 24;
+    opacity: 0;
+  }
+}
+
+/* Film grain tick */
+@keyframes grain {
+
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: -20px 15px;
+  }
+
+  50% {
+    background-position: 15px -20px;
+  }
+
+  75% {
+    background-position: -10px 25px;
+  }
+}
+
+/* Scroll hint pulse */
+@keyframes pulse-hint {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translateY(5px);
+  }
+}
+
+/* Cursor blink */
+@keyframes cursor-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Page flicker */
 @keyframes pageFlicker {
   0% {
     opacity: 1;
@@ -308,11 +565,7 @@ body {
     filter: invert(1);
   }
 
-  30% {
-    opacity: 1;
-    filter: none;
-  }
-
+  30%,
   100% {
     opacity: 1;
     filter: none;
@@ -323,7 +576,7 @@ body {
   animation: pageFlicker 0.8s steps(8) forwards;
 }
 
-/* ========== SPEED LINES ========== */
+/* Speed lines */
 @keyframes speedLinesConverge {
   0% {
     opacity: 0;
@@ -343,8 +596,7 @@ body {
 .speed-lines {
   position: absolute;
   inset: 0;
-  background:
-    repeating-conic-gradient(from 0deg at 50% 50%,
+  background: repeating-conic-gradient(from 0deg at 50% 50%,
       transparent 0deg,
       rgba(232, 0, 61, 0.08) 1deg,
       transparent 2deg);
@@ -352,7 +604,7 @@ body {
   pointer-events: none;
 }
 
-/* ========== PULSE GLOW ========== */
+/* Pulse glow */
 @keyframes pulseGlow {
 
   0%,
@@ -369,7 +621,7 @@ body {
   animation: pulseGlow 2s ease-in-out infinite;
 }
 
-/* ========== INK SPLAT ========== */
+/* Ink splat */
 @keyframes inkSplat {
   0% {
     transform: scale(0);
@@ -405,7 +657,7 @@ body {
   animation: inkSplat 0.6s ease-out forwards;
 }
 
-/* ========== TYPEWRITER ========== */
+/* Typewriter */
 @keyframes typewriter {
   from {
     width: 0;
@@ -438,7 +690,7 @@ body {
     blinkCursor 0.8s step-end infinite;
 }
 
-/* ========== WOBBLE ========== */
+/* Wobble */
 @keyframes wobble {
 
   0%,
@@ -463,7 +715,7 @@ body {
   animation: wobble 0.5s ease-in-out;
 }
 
-/* ========== STARBURST SPIN ========== */
+/* Starburst spin */
 @keyframes starburstSpin {
   from {
     transform: rotate(0deg);
@@ -478,55 +730,454 @@ body {
   animation: starburstSpin 20s linear infinite;
 }
 
-/* ========== SPEECH BUBBLE ========== */
-.speech-bubble {
-  position: relative;
-  background: var(--surface);
-  border: 3px solid var(--ink-light);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+/* ========== CHROMATIC ABERRATION / GLITCH UTILITIES ========== */
+.glitch-text {
+  text-shadow:
+    -2px 0 var(--glitch-cyan),
+    2px 0 var(--glitch-magenta);
 }
 
-.speech-bubble::after {
-  content: '';
+.glitch-text-animated {
+  animation: glitchLoop 3s steps(6) infinite;
+}
+
+.glitch-text-subtle {
+  text-shadow:
+    -1px 0 var(--glitch-cyan),
+    1px 0 var(--glitch-magenta);
+}
+
+.glitch-hover:hover {
+  animation: glitchFlicker 0.4s steps(5) forwards;
+}
+
+/* ============================================================
+   PROGRESS BAR  (NoirTimeline)
+   ============================================================ */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--accent);
+  z-index: var(--z-overlay);
+  transition: width 80ms linear;
+  box-shadow: var(--shadow-glow-pulse);
+}
+
+/* ============================================================
+   MAP TITLE OVERLAY  (NoirTimeline)
+   ============================================================ */
+.map-title-overlay {
   position: absolute;
-  bottom: -12px;
-  left: 24px;
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 12px solid var(--ink-light);
+  top: 24px;
+  left: 32px;
+  z-index: 30;
+  pointer-events: none;
+  animation: stutter-in 0.6s steps(5) both;
 }
 
-.thought-bubble {
-  position: relative;
-  background: var(--surface);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 1rem 1.5rem;
-}
-
-/* ========== SCROLLBAR ========== */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #ff1a50;
-}
-
-/* ========== SELECTION ========== */
-::selection {
-  background: var(--accent);
+.map-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 400;
   color: var(--text);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  animation: glitch-loop var(--anim-dur-glitch) var(--anim-step-medium) infinite;
+}
+
+.map-subtitle {
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  opacity: 0.9;
+  border-left: 2px solid var(--accent);
+  padding-left: 8px;
+}
+
+/* ============================================================
+   SCROLL HINT  (NoirTimeline)
+   ============================================================ */
+.scroll-hint-overlay {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  pointer-events: none;
+}
+
+.scroll-hint-overlay p {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  color: rgba(240, 240, 240, 0.35);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  animation: pulse-hint 2s steps(4) infinite;
+}
+
+/* ============================================================
+   WORLD MAP CONTAINER  (WorldMap)
+   ============================================================ */
+.world-map-container {
+  position: absolute;
+  inset: 0;
+}
+
+.world-map-container svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-parchment-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.55) 100%);
+  mix-blend-mode: multiply;
+}
+
+.map-noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.07;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============================================================
+   FILM GRAIN OVERLAY  (NoirTimeline)
+   ============================================================ */
+.film-grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 512px 512px;
+  animation: grain 0.4s steps(8) infinite;
+}
+
+/* ============================================================
+   RADAR RING ANIMATION  (WorldMap pins)
+   ============================================================ */
+.radar-ring {
+  animation: radar-pulse 1.8s steps(6) infinite;
+  transform-origin: center;
+  stroke: var(--accent) !important;
+}
+
+.radar-ring-delay {
+  animation-delay: 0.45s;
+}
+
+.pin-active {
+  filter: drop-shadow(0 0 8px rgba(232, 0, 61, 0.7));
+}
+
+/* ============================================================
+   DOSSIER CARD  (CheckpointCard)
+   ============================================================ */
+.dossier-card {
+  width: 260px;
+  background: var(--surface);
+  border: var(--border-standard);
+  border-top: var(--border-accent);
+  border-radius: var(--border-radius-none);
+  box-shadow:
+    var(--shadow-comic),
+    var(--shadow-comic-inset);
+  opacity: 0;
+  transform: translateX(var(--card-offset, 0)) scaleX(0.92);
+  pointer-events: none;
+  transition: opacity 0.05s steps(1), transform 0.4s steps(8);
+}
+
+.dossier-card-visible {
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
+  pointer-events: auto;
+}
+
+.dossier-card.from-left {
+  --card-offset: -48px;
+}
+
+.dossier-card.from-right {
+  --card-offset: 48px;
+}
+
+.dossier-stamp {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: var(--font-label);
+  font-size: 0.52rem;
+  color: var(--accent);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.85;
+  border: 2px solid var(--accent);
+  border-radius: 0;
+  padding: 2px 6px;
+  transform: rotate(-3deg);
+  box-shadow: 2px 2px 0 rgba(232, 0, 61, 0.25);
+}
+
+.dossier-image-wrapper {
+  width: calc(100% - 24px);
+  margin: 16px auto 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: var(--border-standard);
+  border-radius: 0;
+}
+
+.dossier-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.35) contrast(1.15) brightness(0.8);
+}
+
+.dossier-body {
+  padding: 14px 18px 16px;
+}
+
+.dossier-number {
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.dossier-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  animation: glitch-in 0.5s steps(5) both;
+  animation-delay: 0.1s;
+}
+
+.dossier-date {
+  font-family: var(--font-label);
+  font-size: 0.62rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.dossier-desc {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  color: rgba(240, 240, 240, 0.6);
+  line-height: 1.55;
+}
+
+.dossier-footer {
+  padding: 0 18px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.dossier-footer-line {
+  flex: 1;
+  height: 1px;
+  background: var(--ink-light);
+  opacity: 0.12;
+}
+
+.dossier-footer-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 0;
+}
+
+/* ============================================================
+   MAP LEGEND  (NoirTimeline)
+   ============================================================ */
+.map-legend-box {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  z-index: 30;
+  border: var(--border-standard);
+  border-radius: 0;
+  padding: 10px 14px;
+  pointer-events: none;
+  background: var(--surface);
+  box-shadow: var(--shadow-comic);
+  animation: stutter-in 0.7s steps(5) 0.3s both;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  color: rgba(240, 240, 240, 0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.legend-line {
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 4px var(--accent-glow);
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 0;
+  border: 2px solid var(--accent);
+  margin-left: 5px;
+  background: transparent;
+}
+
+.legend-progress {
+  font-family: var(--font-label);
+  font-size: 0.54rem;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   PLANE SPRITE  (NoirTimeline)
+   ============================================================ */
+.plane-sprite {
+  filter:
+    drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 6px rgba(232, 0, 61, 0.2));
+}
+
+/* ============================================================
+   END SEQUENCE
+   ============================================================ */
+.end-fade-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 50;
+}
+
+.noir-figure-container {
+  position: fixed;
+  bottom: 0;
+  height: 90vh;
+  width: auto;
+  z-index: 55;
+}
+
+.noir-figure-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: left bottom;
+  filter: brightness(0.85) contrast(1.15);
+}
+
+.end-subtitle-container {
+  position: fixed;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  z-index: 60;
+}
+
+.end-subtitle-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  color: var(--text);
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.8);
+}
+
+.end-red-rule {
+  height: 3px;
+  background: var(--accent);
+  margin-top: 16px;
+  box-shadow: var(--shadow-glow);
+}
+
+.end-cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-left: 4px;
+  animation: cursor-blink 1s step-end infinite;
+  vertical-align: baseline;
+  line-height: 1;
+  margin-top: 12px;
+}
+
+.end-file-stamp {
+  position: fixed;
+  bottom: 28px;
+  left: 8%;
+  z-index: 60;
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  color: rgba(240, 240, 240, 0.3);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .dossier-card {
+    width: 220px;
+  }
+
+  .dossier-title {
+    font-size: 1.1rem;
+  }
+
+  .map-title {
+    font-size: 1.3rem;
+  }
+
+  .map-legend-box {
+    right: 12px;
+    bottom: 14px;
+    padding: 8px 10px;
+  }
 }

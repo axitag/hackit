@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import GlitchText from "./GlitchText";
 import Link from "next/link";
 
@@ -48,8 +49,19 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <section id="faq" className="snap-section px-6 md:px-12 lg:px-16">
-            <div className="text-center mb-6 md:mb-16">
+        <section id="faq" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden">
+            {/* Background image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/images/transmissions_bg.png"
+                    alt="Transmissions section background"
+                    fill
+                    className="object-cover opacity-20"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
+            </div>
+
+            <div className="relative z-10 text-center mb-6 md:mb-16">
                 <GlitchText
                     as="h2"
                     className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
@@ -58,7 +70,7 @@ export default function FAQ() {
                 </GlitchText>
             </div>
 
-            <div className="space-y-4" style={{ maxWidth: '48rem', margin: '0 auto', width: '100%' }}>
+            <div className="relative z-10 space-y-4" style={{ maxWidth: '48rem', margin: '0 auto', width: '100%' }}>
                 {faqs.map((faq, i) => (
                     <motion.div
                         key={i}

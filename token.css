@@ -1,0 +1,91 @@
+/* ============================================================
+   DESIGN TOKENS — Hackathon Site
+   Comic-Book / Spider-Verse Dark Aesthetic
+   
+   HOW TO USE:
+   Import this file at the top of your main CSS/global styles.
+   Reference all values via var(--token-name).
+   Never hardcode hex values or font names in components.
+   ============================================================ */
+
+:root {
+
+    /* ── COLORS ─────────────────────────────────── */
+    --bg: #0a0a0a;
+    /* Page background */
+    --surface: #111111;
+    /* Panel / card background */
+    --text: #f0f0f0;
+    /* Primary text */
+    --accent: #E8003D;
+    /* Primary accent — vivid red */
+    --accent-hover: #ff1a50;
+    /* Accent on hover */
+    --accent-glow: rgba(232, 0, 61, 0.4);
+    /* Glow shadow */
+    --accent-glow-dim: rgba(232, 0, 61, 0.15);
+    /* Subtle glow */
+    --glitch-cyan: #00FFFF;
+    /* Glitch offset — cyan channel */
+    --glitch-magenta: #FF00FF;
+    /* Glitch offset — magenta channel */
+    --ink-dark: #1a1a1a;
+    /* Shadow / offset ink */
+    --ink-light: #ffffff;
+    /* Border ink */
+
+    /* ── TYPOGRAPHY ─────────────────────────────── */
+    --font-display: 'Bangers', cursive;
+    /* H1, H2, hero titles */
+    --font-body: 'Special Elite', cursive;
+    /* Body, paragraphs */
+    --font-label: 'Courier Prime', monospace;
+    /* Tags, badges, meta */
+
+    /* ── BORDERS ────────────────────────────────── */
+    --border-width: 3.5px;
+    --border-standard: 3.5px solid var(--ink-light);
+    --border-accent: 3.5px solid var(--accent);
+    --border-radius-none: 0px;
+    --border-radius-sm: 2px;
+    --border-radius-bubble: 12px;
+
+    /* ── SHADOWS ────────────────────────────────── */
+    --shadow-comic: 4px 4px 0 var(--ink-dark);
+    --shadow-comic-inset: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    --shadow-accent: 4px 4px 0 rgba(232, 0, 61, 0.3);
+    --shadow-glow: 0 0 20px var(--accent-glow-dim);
+    --shadow-glow-pulse: 0 0 30px var(--accent-glow), 0 0 60px rgba(232, 0, 61, 0.3);
+
+    /* ── SPACING ────────────────────────────────── */
+    --space-xs: 0.25rem;
+    /*  4px */
+    --space-sm: 0.5rem;
+    /*  8px */
+    --space-md: 1rem;
+    /* 16px */
+    --space-lg: 1.5rem;
+    /* 24px */
+    --space-xl: 2rem;
+    /* 32px */
+    --space-2xl: 3rem;
+    /* 48px */
+    --space-3xl: 4rem;
+    /* 64px */
+
+    /* ── ANIMATION ──────────────────────────────── */
+    --anim-step-fast: steps(5);
+    --anim-step-medium: steps(8);
+    --anim-step-slow: steps(12);
+    --anim-dur-fast: 0.4s;
+    --anim-dur-mid: 0.6s;
+    --anim-dur-slow: 2s;
+    --anim-dur-glitch: 3s;
+
+    /* ── Z-INDEX ────────────────────────────────── */
+    --z-base: 1;
+    --z-raised: 10;
+    --z-overlay: 100;
+    --z-cursor: 9999;
+    --z-halftone: 9998;
+}
