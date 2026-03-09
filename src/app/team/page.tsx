@@ -128,16 +128,16 @@ export default function TeamPage() {
     if (!mounted) return null;
 
     return (
-        <main className="snap-container bg-[#0a0a0a] relative flex flex-col items-center w-full">
+        <main className="min-h-screen w-full bg-[#0a0a0a] relative overflow-hidden flex flex-col items-center">
             <Navigation />
 
             {/* ── TOP SECTION (TEAMS) WITH BACKGROUND ── */}
-            <div className="relative w-full flex flex-col items-center">
+            <div className="relative w-full pt-36 pb-32 flex flex-col items-center">
 
                 {/* Background Image constrained to this section */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image
-                        src="/images/team/teams_bg.png"
+                        src="/images/team/teams_bg_2.png"
                         alt="City Skyline"
                         fill
                         className="object-cover"
@@ -148,69 +148,65 @@ export default function TeamPage() {
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24">
 
                     {/* --- MENTOR --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full flex flex-col items-center py-10">
                         <SectionHeader title="MENTOR" />
                         <div className="flex flex-wrap justify-center gap-10 w-full max-w-5xl mx-auto">
-                            <div className="w-[250px] sm:w-[270px]">
+                            <div className="w-[210px] sm:w-[225px]">
                                 <PortraitCard member={mentor[0]} index={0} />
                             </div>
                         </div>
-                        <div className="absolute bottom-0 left-0 w-full translate-y-1/2">
-                            <SectionDivider />
-                        </div>
                     </section>
 
+                    <SectionDivider />
+
                     {/* --- FACULTY ADVISOR --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full flex flex-col items-center py-10">
                         <SectionHeader title="FACULTY ADVISOR" />
                         <div className="flex flex-wrap justify-center gap-10 md:gap-14 w-full max-w-5xl mx-auto">
                             {facultyAdvisors.map((member, i) => (
-                                <div key={i} className="w-[250px] sm:w-[270px]">
+                                <div key={i} className="w-[210px] sm:w-[225px]">
                                     <PortraitCard member={member} index={i} />
                                 </div>
                             ))}
                         </div>
-                        <div className="absolute bottom-0 left-0 w-full translate-y-1/2">
-                            <SectionDivider />
-                        </div>
                     </section>
 
+                    <SectionDivider />
+
                     {/* --- ORGANIZING TEAM --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full flex flex-col items-center py-10">
                         <SectionHeader title="ORGANIZING TEAM" />
                         <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 md:gap-x-12 w-full max-w-7xl mx-auto">
                             {organizingTeam.map((member, i) => (
-                                <div key={i} className="w-[250px] sm:w-[270px]">
+                                <div key={i} className="w-[210px] sm:w-[225px]">
                                     <PortraitCard member={member} index={i} />
                                 </div>
                             ))}
                         </div>
-                        <div className="absolute bottom-0 left-0 w-full translate-y-1/2">
-                            <SectionDivider />
-                        </div>
                     </section>
 
+                    <SectionDivider />
+
                     {/* --- DEVELOPER TEAM --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full flex flex-col items-center py-10">
                         <SectionHeader title="DEVELOPER TEAM" />
                         <div className="flex flex-wrap justify-center gap-10 md:gap-14 w-full max-w-5xl mx-auto">
                             {devTeam.map((member, i) => (
-                                <div key={i} className="w-[250px] sm:w-[270px]">
+                                <div key={i} className="w-[210px] sm:w-[225px]">
                                     <PortraitCard member={member} index={i} />
                                 </div>
                             ))}
                         </div>
-                        <div className="absolute bottom-0 left-0 w-full translate-y-1/2">
-                            <SectionDivider />
-                        </div>
                     </section>
 
+                    <SectionDivider />
+
                     {/* --- CORE TEAM --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full flex flex-col items-center py-10">
                         <SectionHeader title="CORE TEAM" />
                         <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 md:gap-x-12 w-full max-w-7xl mx-auto">
                             {coreTeam.map((member, i) => (
-                                <div key={i} className="w-[250px] sm:w-[270px]">
+                                <div key={i} className="w-[210px] sm:w-[225px]">
                                     <PortraitCard member={member} index={i} />
                                 </div>
                             ))}
@@ -221,7 +217,7 @@ export default function TeamPage() {
             </div>
 
             {/* ── FOOTER SECTION (NO BACKGROUND) ── */}
-            <div className="w-full relative z-20 snap-start">
+            <div className="w-full relative z-20 mt-32">
                 <RegisterCTA />
                 <Footer />
             </div>
