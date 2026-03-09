@@ -89,11 +89,11 @@ export default function AboutPage() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.3 }}
                         >
-                            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl mb-6 text-[#f0ece0] leading-none uppercase drop-shadow-[2px_2px_0_#111]">
+                            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl mb-12 text-[#f0ece0] leading-none uppercase drop-shadow-[2px_2px_0_#111]">
                                 ABOUT HACKIT
                             </h2>
 
-                            <div className="text-base sm:text-lg text-[#f0ece0]/90 leading-relaxed font-label text-justify content-body">
+                            <div className="text-base sm:text-lg text-[#f0ece0]/90 leading-relaxed font-label text-justify content-body mt-8">
                                 <span className="drop-cap float-left mr-5 mt-1 text-6xl md:text-7xl font-display text-[#f0ece0] bg-[#1a1a1a] px-3 py-1 shadow-[4px_4px_0_#111]">
                                     W
                                 </span>
@@ -126,11 +126,11 @@ export default function AboutPage() {
                                     TOP SECRET
                                 </div>
 
-                                <h3 className="font-display text-3xl sm:text-4xl text-[#E8192C] mb-6 border-b-2 border-[#333] pb-3 uppercase text-left">
+                                <h3 className="font-display text-3xl sm:text-4xl text-[#E8192C] mb-12 border-b-2 border-[#333] pb-3 uppercase text-left">
                                     WHY JOIN US?
                                 </h3>
 
-                                <ul className="space-y-4 text-left w-full">
+                                <ul className="space-y-4 text-left w-full mt-6">
                                     {whyJoinUs.map((item, i) => (
                                         <motion.li
                                             key={i}

@@ -38,11 +38,18 @@ export default function Navigation() {
                             ABOUT
                         </Link>
                         <Link
-                            href="/teams"
+                            href="/team"
                             onClick={() => setIsMenuOpen(false)}
                             className="block px-4 py-3 text-white hover:bg-[var(--accent)] hover:text-white font-display tracking-wider transition-colors"
                         >
                             TEAM
+                        </Link>
+                        <Link
+                            href="/problem-statement"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="block px-4 py-3 text-white hover:bg-[var(--accent)] hover:text-white font-display tracking-wider transition-colors"
+                        >
+                            PROBLEM STATEMENT
                         </Link>
                     </div>
                 )}

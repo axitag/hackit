@@ -157,15 +157,15 @@ export default function Hero() {
                             alt="Akiyam logo"
                             width={300}
                             height={300}
-                            className="w-[200px] md:w-[280px] lg:w-[360px] h-auto mt-10 md:mt-12 opacity-80 mb-10"
+                            className="w-[200px] md:w-[280px] lg:w-[360px] h-auto filter brightness-100"
                         />
 
-                        <GlitchImage
+                        <Image
                             src="/images/amity_bg_2.png"
                             alt="Amity logo"
-                            width={200}
-                            height={200}
-                            className="w-[80px] h-[80px] md:w-[140px] md:h-[140px] lg:w-[180px] lg:h-[180px] z-10 opacity-80"
+                            width={300}
+                            height={300}
+                            className="w-[140px] xs:w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px] h-auto filter brightness-100"
                         />
                     </div>
 

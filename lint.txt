@@ -1,0 +1,44 @@
+﻿
+C:\Users\cooking\code\work\hackit\src\app\about\page.tsx
+  100:290  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  100:315  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  102:255  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\cooking\code\work\hackit\src\app\team\page.tsx
+   71:52  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  126:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\cooking\code\work\hackit\src\app\team\page.tsx:126:9
+  124 |
+  125 |     useEffect(() => {
+> 126 |         setMounted(true);
+      |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  127 |     }, []);
+  128 |
+  129 |     if (!mounted) return null;  react-hooks/set-state-in-effect
+
+C:\Users\cooking\code\work\hackit\src\components\GlitchText.tsx
+  19:5  warning  'animated' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\cooking\code\work\hackit\src\components\Hero.tsx
+  3:10  warning  'useState' is defined but never used       @typescript-eslint/no-unused-vars
+  6:8   warning  'Link' is defined but never used           @typescript-eslint/no-unused-vars
+  7:8   warning  'GlitchText' is defined but never used     @typescript-eslint/no-unused-vars
+  8:8   warning  'GlitchSubtext' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\cooking\code\work\hackit\src\components\RegisterCTA.tsx
+   5:8  warning  'Link' is defined but never used                 @typescript-eslint/no-unused-vars
+  14:7  warning  'quickLinks' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\cooking\code\work\hackit\src\components\Teams.tsx
+  3:10  warning  'useState' is defined but never used         @typescript-eslint/no-unused-vars
+  4:18  warning  'AnimatePresence' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 14 problems (5 errors, 9 warnings)
+
