@@ -22,7 +22,7 @@ const tracks: Track[] = [
     },
     {
         issue: "#002",
-        title: "EdTech",
+        title: "Web Dev",
         tagline: "Knowledge is the only superpower.",
         image: "/images/track-origin.png",
 

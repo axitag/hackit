@@ -128,11 +128,11 @@ export default function TeamPage() {
     if (!mounted) return null;
 
     return (
-        <main className="min-h-screen w-full bg-[#0a0a0a] relative overflow-hidden flex flex-col items-center">
+        <main className="snap-container bg-[#0a0a0a] relative flex flex-col items-center w-full">
             <Navigation />
 
             {/* ── TOP SECTION (TEAMS) WITH BACKGROUND ── */}
-            <div className="relative w-full pt-36 pb-32 flex flex-col items-center">
+            <div className="relative w-full flex flex-col items-center">
 
                 {/* Background Image constrained to this section */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
@@ -148,19 +148,20 @@ export default function TeamPage() {
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24">
 
                     {/* --- MENTOR --- */}
-                    <section className="w-full flex flex-col items-center py-10">
+                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
                         <SectionHeader title="MENTOR" />
                         <div className="flex flex-wrap justify-center gap-10 w-full max-w-5xl mx-auto">
                             <div className="w-[210px] sm:w-[225px]">
                                 <PortraitCard member={mentor[0]} index={0} />
                             </div>
                         </div>
-                    </section>
+                        <div className="absolute bottom-0 left-0 w-full translate-y-1/2">
+                            <SectionDivider />
+                        </div>
+                        {/* </section> */}
 
-                    <SectionDivider />
-
-                    {/* --- FACULTY ADVISOR --- */}
-                    <section className="w-full flex flex-col items-center py-10">
+                        {/* --- FACULTY ADVISOR --- */}
+                        {/* <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative"> */}
                         <SectionHeader title="FACULTY ADVISOR" />
                         <div className="flex flex-wrap justify-center gap-10 md:gap-14 w-full max-w-5xl mx-auto">
                             {facultyAdvisors.map((member, i) => (
@@ -169,12 +170,13 @@ export default function TeamPage() {
                                 </div>
                             ))}
                         </div>
+                        <div className="absolute bottom-0 left-0 w-full translate-y-1/2">
+                            <SectionDivider />
+                        </div>
                     </section>
 
-                    <SectionDivider />
-
                     {/* --- ORGANIZING TEAM --- */}
-                    <section className="w-full flex flex-col items-center py-10">
+                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
                         <SectionHeader title="ORGANIZING TEAM" />
                         <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 md:gap-x-12 w-full max-w-7xl mx-auto">
                             {organizingTeam.map((member, i) => (
@@ -183,12 +185,13 @@ export default function TeamPage() {
                                 </div>
                             ))}
                         </div>
+                        <div className="absolute bottom-0 left-0 w-full translate-y-1/2">
+                            <SectionDivider />
+                        </div>
                     </section>
 
-                    <SectionDivider />
-
                     {/* --- DEVELOPER TEAM --- */}
-                    <section className="w-full flex flex-col items-center py-10">
+                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
                         <SectionHeader title="DEVELOPER TEAM" />
                         <div className="flex flex-wrap justify-center gap-10 md:gap-14 w-full max-w-5xl mx-auto">
                             {devTeam.map((member, i) => (
@@ -197,12 +200,13 @@ export default function TeamPage() {
                                 </div>
                             ))}
                         </div>
+                        <div className="absolute bottom-0 left-0 w-full translate-y-1/2">
+                            <SectionDivider />
+                        </div>
                     </section>
 
-                    <SectionDivider />
-
                     {/* --- CORE TEAM --- */}
-                    <section className="w-full flex flex-col items-center py-10">
+                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
                         <SectionHeader title="CORE TEAM" />
                         <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 md:gap-x-12 w-full max-w-7xl mx-auto">
                             {coreTeam.map((member, i) => (
@@ -217,7 +221,7 @@ export default function TeamPage() {
             </div>
 
             {/* ── FOOTER SECTION (NO BACKGROUND) ── */}
-            <div className="w-full relative z-20 mt-32">
+            <div className="w-full relative z-20 snap-start">
                 <RegisterCTA />
                 <Footer />
             </div>

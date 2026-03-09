@@ -3,12 +3,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import GlitchText from "./GlitchText";
+import { useState } from "react";
 
 const prizes = [
     {
         place: "1ST",
         label: "GRAND PRIZE",
-        amount: "₹5,000",
+        amitianAmount: "₹5,000",
+        nonAmitianAmount: "₹5,000",
         color: "#E8003D",
         bgColor: "rgba(232,0,61,0.15)",
         scale: 1,
@@ -18,7 +20,8 @@ const prizes = [
     {
         place: "2ND",
         label: "RUNNER UP",
-        amount: "₹2,500",
+        amitianAmount: "₹3,000",
+        nonAmitianAmount: "₹3,000",
         color: "#aaaaaa",
         bgColor: "rgba(170,170,170,0.1)",
         scale: 0.85,
@@ -28,7 +31,8 @@ const prizes = [
     {
         place: "3RD",
         label: "THIRD PLACE",
-        amount: "₹1,000",
+        amitianAmount: "₹2,000",
+        nonAmitianAmount: "₹2,000",
         color: "#cd7f32",
         bgColor: "rgba(205,127,50,0.1)",
         scale: 0.75,
@@ -63,6 +67,8 @@ function StarburstSVG({ points, color }: { points: number; color: string }) {
 }
 
 export default function Prizes() {
+    const [isAmitian, setIsAmitian] = useState(true);
+
     return (
         <section id="prizes" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden">
             {/* Background image */}
@@ -73,16 +79,32 @@ export default function Prizes() {
                     fill
                     className="object-cover opacity-20"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
+                <div className="absolute inset-0 bg-linear-to-b from-(--bg) via-transparent to-(--bg)" />
             </div>
 
-            <div className="relative z-10 text-center mb-6 md:mb-16">
+            <div className="relative z-10 text-center mb-8 md:mb-12">
                 <GlitchText
                     as="h2"
                     className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
                 >
                     THE LOOT
                 </GlitchText>
+
+                {/* Amitian / Non-Amitian Toggle */}
+                <div className="flex items-center justify-center gap-4 mt-8">
+                    <button
+                        onClick={() => setIsAmitian(true)}
+                        className={`font-display tracking-widest text-lg md:text-xl px-6 py-2 border-2 transition-all duration-300 ${isAmitian ? 'bg-(--accent) text-white border-(--accent) shadow-[4px_4px_0_#1a1a1a]' : 'bg-transparent text-white/50 border-white/20 hover:text-white hover:border-white/50 shadow-none'}`}
+                    >
+                        AMITIAN
+                    </button>
+                    <button
+                        onClick={() => setIsAmitian(false)}
+                        className={`font-display tracking-widest text-lg md:text-xl px-6 py-2 border-2 transition-all duration-300 ${!isAmitian ? 'bg-(--accent) text-white border-(--accent) shadow-[4px_4px_0_#1a1a1a]' : 'bg-transparent text-white/50 border-white/20 hover:text-white hover:border-white/50 shadow-none'}`}
+                    >
+                        NON-AMITIAN
+                    </button>
+                </div>
             </div>
 
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-end" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
@@ -120,7 +142,7 @@ export default function Prizes() {
                                     {prize.label}
                                 </span>
                                 <span className="font-display text-4xl md:text-5xl text-white block mt-2">
-                                    {prize.amount}
+                                    {isAmitian ? prize.amitianAmount : prize.nonAmitianAmount}
                                 </span>
                             </div>
                         </div>
