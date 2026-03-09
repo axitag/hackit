@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 import RegisterCTA from "@/components/RegisterCTA";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
+import Navigation from "@/components/Navigation";
 
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
 
   return (
     <main className={`snap-container ${!flickerDone ? "page-flicker" : ""}`}>
+      <Navigation />
       <Hero />
       <About />
       <Tracks />

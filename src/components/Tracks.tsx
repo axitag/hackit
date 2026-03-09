@@ -47,11 +47,11 @@ export default function Tracks() {
     const router = useRouter();
 
     return (
-        <section id="tracks" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden">
+        <section id="tracks" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden flex-col gap-10">
             {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/bg_tracks.png"
+                    src="/images/bg_track_2.png"
                     alt="Tracks section background"
                     fill
                     className="object-cover opacity-20"

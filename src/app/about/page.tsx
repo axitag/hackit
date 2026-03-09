@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import RegisterCTA from "@/components/RegisterCTA";
 
 const whyJoinUs = [
     "Work on real-world challenges",
@@ -14,7 +15,7 @@ const whyJoinUs = [
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen bg-[#0a0a0a] text-[#f0ece0] flex flex-col relative overflow-hidden font-body selection:bg-[#E8192C] selection:text-white w-full">
+        <main className="snap-container min-h-screen bg-[#0a0a0a] text-[#f0ece0] flex flex-col relative overflow-hidden font-body selection:bg-[#E8192C] selection:text-white w-full">
             {/* Background Image */}
             <div className="fixed inset-0 z-0 pointer-events-none w-full h-full flex items-center justify-center">
                 <Image
@@ -36,8 +37,8 @@ export default function AboutPage() {
             {/* Scanline Animation */}
             <div className="fixed inset-0 z-10 pointer-events-none scanlines opacity-10" />
 
-            {/* Main Content Container - Using grid and max-w to force center alignment and 2 columns */}
-            <div className="grow w-full flex flex-col items-center pt-24 pb-16 px-4 md:px-8 z-20 relative">
+            {/* Main Content Container */}
+            <section className="snap-section min-h-[100dvh] flex flex-col items-center justify-center w-full pt-20 pb-16 px-4 md:px-8 z-20 relative">
                 <div className="w-full max-w-6xl mx-auto flex flex-col items-center gap-10">
 
                     {/* Masthead */}
@@ -89,11 +90,11 @@ export default function AboutPage() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.3 }}
                         >
-                            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl mb-12 text-[#f0ece0] leading-none uppercase drop-shadow-[2px_2px_0_#111]">
+                            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl mb-20 text-[#f0ece0] leading-none uppercase drop-shadow-[2px_2px_0_#111]">
                                 ABOUT HACKIT
                             </h2>
 
-                            <div className="text-base sm:text-lg text-[#f0ece0]/90 leading-relaxed font-label text-justify content-body mt-8">
+                            <div className="text-base sm:text-lg text-[#f0ece0]/90 leading-relaxed font-label text-justify content-body">
                                 <span className="drop-cap float-left mr-5 mt-1 text-6xl md:text-7xl font-display text-[#f0ece0] bg-[#1a1a1a] px-3 py-1 shadow-[4px_4px_0_#111]">
                                     W
                                 </span>
@@ -157,9 +158,10 @@ export default function AboutPage() {
 
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div className="w-full relative z-20 mt-auto">
+            <div className="w-full relative z-20">
+                <RegisterCTA />
                 <Footer />
             </div>
 

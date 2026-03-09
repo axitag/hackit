@@ -60,12 +60,23 @@ const contactSocials = [
 
 export default function RegisterCTA() {
     return (
-        <div className="snap-section-auto relative w-full overflow-hidden min-h-[100dvh] flex flex-col">
+        <div className="snap-section-auto relative w-full overflow-hidden min-h-[100dvh] bg-[#0a0a0a]">
+            {/* ===== UPPER STRIP ===== */}
+            {/* <div className="absolute top-0 left-0 w-full z-20 pointer-events-none">
+                <Image
+                    src="/images/upper_strip.png"
+                    alt="Upper Strip Pattern"
+                    width={1920}
+                    height={100}
+
+                    className="object-contain opacity-90"
+                />
+            </div> */}
 
             {/* ===== REGISTER CTA SECTION ===== */}
             <section
                 id="register"
-                className="relative w-full flex flex-col items-center justify-center px-6 md:px-12 py-12 md:py-20"
+                className="absolute top-1/2 left-0 right-0 -translate-y-1/2 w-full flex flex-col items-center justify-center px-6 md:px-12 py-16 md:py-24"
             >
                 {/* Background image */}
                 <div className="absolute inset-0 z-0">
@@ -73,19 +84,19 @@ export default function RegisterCTA() {
                         src="/images/footer_bg.png"
                         alt="Register section background"
                         fill
-                        className="object-contain opacity-40 mix-blend-screen"
+                        className="object-contain opacity-40"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/90 via-[#0d0d0d]/40 to-[#0d0d0d]" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-[var(--bg)]/80" />
                     {/* Dark vignette overlay */}
                     <div
                         className="absolute inset-0"
                         style={{
-                            background: "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.8) 100%)",
+                            background: "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%)",
                         }}
                     />
                 </div>
 
-                <div className="relative z-10 text-center flex flex-col items-center justify-center max-w-5xl mx-auto w-full pt-4">
+                <div className="relative z-10 text-center flex flex-col items-center justify-center max-w-5xl mx-auto w-full">
                     {/* Tagline */}
                     <motion.p
                         className="font-label text-xs md:text-sm text-[var(--accent)] tracking-[0.35em] mb-4 md:mb-6"
@@ -106,7 +117,7 @@ export default function RegisterCTA() {
                     >
                         <GlitchText
                             as="h2"
-                            className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white tracking-wider leading-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                            className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-white tracking-wider leading-tight"
                         >
                             JOIN THE HACKIT
                         </GlitchText>
@@ -114,7 +125,7 @@ export default function RegisterCTA() {
 
                     {/* Subtext */}
                     <motion.p
-                        className="mt-4 md:mt-6 font-body text-sm md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed"
+                        className="mt-4 md:mt-6 font-body text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -125,7 +136,7 @@ export default function RegisterCTA() {
 
                     {/* Stats row */}
                     <motion.div
-                        className="mt-6 md:mt-10 flex items-center justify-center gap-8 md:gap-14"
+                        className="mt-8 md:mt-12 flex items-center justify-center gap-8 md:gap-14"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -133,7 +144,7 @@ export default function RegisterCTA() {
                     >
                         {stats.map((stat, i) => (
                             <div key={i} className="text-center">
-                                <span className="font-display text-2xl sm:text-3xl md:text-4xl text-[var(--accent)] block drop-shadow-[0_0_10px_rgba(232,25,44,0.3)]">
+                                <span className="font-display text-2xl sm:text-3xl md:text-4xl text-[var(--accent)] block">
                                     {stat.value}
                                 </span>
                                 <span className="font-label text-[10px] md:text-xs text-white/40 tracking-widest mt-1 block">
@@ -145,7 +156,7 @@ export default function RegisterCTA() {
 
                     {/* Divider */}
                     <motion.div
-                        className="mt-6 md:mt-8 mx-auto w-24 h-[2px] bg-[var(--accent)] opacity-40 shadow-[0_0_8px_rgba(232,25,44,0.5)]"
+                        className="mt-8 md:mt-10 mx-auto w-24 h-[2px] bg-[var(--accent)] opacity-40"
                         initial={{ scaleX: 0 }}
                         whileInView={{ scaleX: 1 }}
                         viewport={{ once: true }}
@@ -154,14 +165,14 @@ export default function RegisterCTA() {
 
                     {/* Register button */}
                     <motion.div
-                        className="mt-8 md:mt-10 mb-6"
+                        className="mt-8 md:mt-10"
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.5, duration: 0.5 }}
                     >
                         <button
-                            className="relative font-display text-xl sm:text-2xl md:text-3xl bg-[var(--accent)] text-white px-10 py-4 sm:px-14 sm:py-5 md:px-16 md:py-6 tracking-wider pulse-glow ink-splat transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(232,0,61,0.4)] active:scale-95 z-10"
+                            className="relative font-display text-xl sm:text-2xl md:text-3xl bg-[var(--accent)] text-white px-10 py-4 sm:px-14 sm:py-5 md:px-16 md:py-6 tracking-wider pulse-glow ink-splat transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(232,0,61,0.4)] active:scale-95"
                             style={{
                                 clipPath: "polygon(1% 0%, 99% 3%, 100% 97%, 2% 100%)",
                             }}
@@ -172,7 +183,7 @@ export default function RegisterCTA() {
 
                     {/* Social links */}
                     <motion.div
-                        className="mt-8 flex flex-col items-center gap-3"
+                        className="mt-10 md:mt-14 flex flex-col items-center gap-4"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -186,7 +197,7 @@ export default function RegisterCTA() {
                                 <a
                                     key={social.name}
                                     href={social.href}
-                                    className="comic-border bg-[#111] w-10 h-10 md:w-11 md:h-11 flex items-center justify-center text-sm md:text-base text-white/60 hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 relative z-10"
+                                    className="comic-border bg-[var(--surface)] w-11 h-11 md:w-12 md:h-12 flex items-center justify-center text-base md:text-lg text-white/60 hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)] transition-all duration-300"
                                     aria-label={social.name}
                                 >
                                     {social.icon}
@@ -197,23 +208,32 @@ export default function RegisterCTA() {
                 </div>
             </section>
 
-            {/* ===== CONTACT & MAP SECTION (Noir Redesign) ===== */}
-            <div className="relative w-full grow bg-[#0d0d0d] px-6 md:px-12 lg:px-16 py-12 flex flex-col flex-1 overflow-hidden">
-                {/* Visual Connector / Fade between CTA and this section */}
-                <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#0d0d0d] to-transparent z-10 pointer-events-none" />
+            {/* ===== 3-COLUMN FOOTER SECTION ===== */}
+            <footer className="absolute bottom-0 left-0 right-0 w-full bg-[#0a0a0a] px-6 md:px-12 lg:px-16 py-8 md:py-12 border-t border-white/10 z-10">
+                <div className="w-full flex flex-col md:flex-row justify-between gap-12 lg:gap-16">
 
-                {/* Horizontal Dashed Divider Line (Optional extra border just for separation) */}
-                <div className="absolute top-0 left-0 right-0 border-t border-dashed border-[#E8192C]/30" />
+                    {/* Column 1: Contact */}
+                    {/* <div className="flex flex-col space-y-6 flex-[2]">
+                        <h3 className="font-display text-2xl tracking-widest uppercase text-white flex items-center gap-2">
+                            <span className="text-[var(--accent)]">»</span> Contact
+                        </h3>
+                        <div className="space-y-4 font-body text-white/70">
+                            <a href="mailto:asset.aikyam@gmail.com" className="hover:text-[var(--accent)] transition-colors block text-lg tracking-wide">
+                                asset.aikyam@gmail.com
+                            </a>
+                            <div className="space-y-2 mt-4 text-base">
+                                <p>Saumya Singh: <span className="text-white/50">+91 81027 73833</span></p>
+                                <p>Soubhagya Srivastava: <span className="text-white/50">+91 89670 10103</span></p>
+                            </div>
+                        </div>
+                    </div> */}
 
-                <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 grow py-6">
-
-                    {/* LEFT PANEL — "The Dossier" */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
-                        className="flex-1 flex justify-center w-full"
+                        className="flex-[2] justify-center w-full"
                     >
                         <div className="w-full max-w-[520px] flex flex-col space-y-6">
                             <h3 className="font-display text-3xl md:text-4xl text-white tracking-widest uppercase flex items-center gap-2">
@@ -272,90 +292,79 @@ export default function RegisterCTA() {
                         </div>
                     </motion.div>
 
-                    {/* Divider string between columns on large screens */}
-                    <div className="hidden lg:block w-px border-l-2 border-dashed border-[#E8192C] opacity-30 mt-10" />
 
-                    {/* RIGHT PANEL — "The Map" */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                        className="flex-1 w-full relative flex justify-center mt-8 lg:mt-0"
-                    >
-                        <div className="w-full max-w-[520px] flex flex-col">
-                            {/* Top Surveillance Label */}
-                            <div className="flex items-center gap-3 mb-4 pl-2">
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#E8192C] animate-pulse shadow-[0_0_8px_#E8192C]" />
-                                <span className="font-mono text-[#E8192C] text-xs tracking-[0.3em] font-bold">[ SURVEILLANCE: ACTIVE ]</span>
-                            </div>
+                    {/* Column 2: Quick Links */}
+                    <div className="flex flex-col space-y-6 flex-[2]">
+                        <h3 className="font-display text-2xl tracking-widest uppercase text-white flex items-center gap-2">
+                            <span className="text-[var(--accent)]">»</span> Quick Links
+                        </h3>
+                        <div className="grid grid-cols-2 gap-y-4 gap-x-6 font-body text-white/70">
+                            {quickLinks.map((link) => (
+                                <Link
+                                    key={link.label}
+                                    href={link.href}
+                                    className="hover:text-[var(--accent)] hover:translate-x-1 transition-all duration-200 text-sm md:text-base"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
 
-                            {/* Map Noir Frame */}
-                            <div className="relative w-full h-[350px] md:h-[400px] bg-[#111] p-3 border-4 border-[#1a1a1a] shadow-[10px_10px_0_#000] group">
+                    {/* Column 3: Map */}
+                    <div className="flex flex-col space-y-6 flex-[2]">
+                        <h3 className="font-display text-2xl tracking-widest uppercase text-white flex items-center gap-2">
+                            <span className="text-[var(--accent)]">»</span> Location
+                        </h3>
+                        {/* Map Noir Frame */}
+                        <div className="relative w-full h-[250px] md:h-[300px] bg-[#111] p-3 border-4 border-[#1a1a1a] shadow-[10px_10px_0_#000] group">
+                            {/* Inner distressed border / iframe container */}
+                            <div className="relative w-full h-full border border-[#444] overflow-hidden">
+                                {/* The Map */}
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4651.813641740845!2d85.0520668762238!3d25.61231131476043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed56457e773c5d%3A0x26f4637f762e3747!2sAmity%20University%2C%20Patna!5e1!3m2!1sen!2sin!4v1739893950078!5m2!1sen!2sin"
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen={false}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="Hackathon Location"
+                                    className="absolute inset-0 z-0 transition-all duration-700 filter sepia-[0.4] contrast-[1.2] brightness-[0.7] group-hover:sepia-[0.2] group-hover:contrast-[1.1] group-hover:brightness-[0.9]"
+                                />
 
-                                {/* Inner distressed border / iframe container */}
-                                <div className="relative w-full h-full border border-[#444] overflow-hidden">
+                                {/* Map Overlays (Halftone & Vignette) */}
+                                <div className="absolute inset-0 z-10 opacity-30 pointer-events-none mix-blend-multiply"
+                                    style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '3px 3px' }}
+                                />
+                                <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.8)]" />
 
-                                    {/* The Map */}
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4651.813641740845!2d85.0520668762238!3d25.61231131476043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed56457e773c5d%3A0x26f4637f762e3747!2sAmity%20University%2C%20Patna!5e1!3m2!1sen!2sin!4v1739893950078!5m2!1sen!2sin"
-                                        width="100%"
-                                        height="100%"
-                                        style={{ border: 0 }}
-                                        allowFullScreen
-                                        loading="lazy"
-                                        referrerPolicy="no-referrer-when-downgrade"
-                                        title="Amity University Patna Location"
-                                        className="absolute inset-0 z-0 transition-all duration-700 filter sepia-[0.4] contrast-[1.2] brightness-[0.7] group-hover:sepia-[0.2] group-hover:contrast-[1.1] group-hover:brightness-[0.9]"
-                                    />
-
-                                    {/* Map Overlays (Halftone & Vignette) */}
-                                    <div className="absolute inset-0 z-10 opacity-30 pointer-events-none mix-blend-multiply"
-                                        style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '3px 3px' }}
-                                    />
-                                    <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.8)]" />
-
-                                    {/* Red Crosshair SVG */}
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none opacity-80 flex items-center justify-center">
-                                        <svg width="60" height="60" viewBox="0 0 100 100" className="text-[#E8192C]">
-                                            <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-                                            <circle cx="50" cy="50" r="6" fill="currentColor" className="animate-pulse" />
-                                            <line x1="50" y1="0" x2="50" y2="35" stroke="currentColor" strokeWidth="2" />
-                                            <line x1="50" y1="65" x2="50" y2="100" stroke="currentColor" strokeWidth="2" />
-                                            <line x1="0" y1="50" x2="35" y2="50" stroke="currentColor" strokeWidth="2" />
-                                            <line x1="65" y1="50" x2="100" y2="50" stroke="currentColor" strokeWidth="2" />
-                                        </svg>
-                                    </div>
-
-                                    {/* Open in Maps CTA Button */}
-                                    <a
-                                        href="https://maps.google.com/?q=Amity+University+Patna"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="absolute bottom-4 right-4 z-30 bg-[#E8192C] text-white font-display text-lg md:text-xl uppercase tracking-widest px-6 py-2 -skew-x-6 border-b-4 border-r-4 border-[#8B0000] hover:translate-y-[2px] hover:translate-x-[2px] hover:border-b-2 hover:border-r-2 transition-all active:translate-y-[4px] active:translate-x-[4px] active:border-0 shadow-lg"
-                                    >
-                                        OPEN IN MAPS ▸
-                                    </a>
+                                {/* Red Crosshair SVG */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none opacity-80 flex items-center justify-center">
+                                    <svg width="60" height="60" viewBox="0 0 100 100" className="text-[#E8192C]">
+                                        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+                                        <circle cx="50" cy="50" r="6" fill="currentColor" className="animate-pulse" />
+                                        <line x1="50" y1="0" x2="50" y2="35" stroke="currentColor" strokeWidth="2" />
+                                        <line x1="50" y1="65" x2="50" y2="100" stroke="currentColor" strokeWidth="2" />
+                                        <line x1="0" y1="50" x2="35" y2="50" stroke="currentColor" strokeWidth="2" />
+                                        <line x1="65" y1="50" x2="100" y2="50" stroke="currentColor" strokeWidth="2" />
+                                    </svg>
                                 </div>
-                            </div>
 
-                            {/* Bottom Coordinate Strip */}
-                            <div className="mt-4 text-right pr-2">
-                                <span className="font-mono text-[#f0ece0]/40 text-[10px] md:text-xs tracking-[0.2em]">COORD: 25.5941° N, 85.1376° E</span>
+                                {/* Open in Maps CTA Button */}
+                                <a
+                                    href="https://maps.google.com/?q=Amity+University+Patna"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="absolute bottom-4 right-4 z-30 bg-[#E8192C] text-white font-display text-lg md:text-xl uppercase tracking-widest px-6 py-2 -skew-x-6 border-b-4 border-r-4 border-[#8B0000] hover:translate-y-[2px] hover:translate-x-[2px] hover:border-b-2 hover:border-r-2 transition-all active:translate-y-[4px] active:translate-x-[4px] active:border-0 shadow-lg"
+                                >
+                                    OPEN IN MAPS ▸
+                                </a>
                             </div>
                         </div>
-                    </motion.div>
-
+                    </div>
                 </div>
-
-                {/* FOOTER */}
-                <div className="relative z-10 w-full mt-auto pt-8 border-t border-[#333]">
-                    <p className="text-center font-mono text-[#f0ece0]/30 text-[10px] md:text-xs tracking-[0.3em] uppercase">
-                        HackIT © 2026 — All timelines reserved.
-                    </p>
-                </div>
-            </div>
-
+            </footer>
         </div>
     );
 }

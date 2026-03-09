@@ -49,7 +49,7 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <section id="faq" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden">
+        <section id="faq" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden flex flex-col gap-10">
             {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image

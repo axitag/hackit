@@ -205,7 +205,7 @@ export default function Hero() {
                         className="relative font-display text-lg sm:text-xl md:text-2xl bg-[var(--accent)] text-white px-12 py-3 sm:px-10 sm:py-4 md:px-14 md:py-5 tracking-wider pulse-glow ink-splat transition-transform hover:scale-105 active:scale-95"
                         style={{
                             clipPath:
-                                "polygon(2% 0%, 98% 2%, 100% 96%, 3% 100%)",
+                                "polygon(0% 0%, 98% 2%, 100% 96%, 1% 100%)",
                         }}
                     >
                         Break the code. Break the multiverse.
