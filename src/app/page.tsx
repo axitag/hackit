@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
 import Tracks from "@/components/Tracks";
 import Schedule from "@/components/Schedule";
 import Prizes from "@/components/Prizes";
@@ -23,7 +22,6 @@ export default function Home() {
   return (
     <main className={`snap-container ${!flickerDone ? "page-flicker" : ""}`}>
       <Hero />
-      <About />
       <Tracks />
       <Schedule />
       <Prizes />

@@ -7,6 +7,7 @@ import Link from "next/link";
 import GlitchText from "./GlitchText";
 import GlitchSubtext from "./GlitchSubtext";
 import GlitchImage from "./GlitchImage";
+import Navigation from "./Navigation";
 
 const floatingWords = [
     { text: "CODE!", x: "10%", y: "20%", rotate: -15, delay: 0 },
@@ -16,40 +17,13 @@ const floatingWords = [
 ];
 
 export default function Hero() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     return (
         <section
             id="hero"
             className="snap-section relative w-full flex flex-col items-center justify-center overflow-hidden"
         >
             {/* Top-left Menu */}
-            <div className="absolute top-6 left-6 z-50">
-                <div className="relative">
-                    <button
-                        className="text-white p-2 hover:bg-white/10 rounded transition-colors group"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:stroke-[var(--accent)] transition-colors">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </button>
-                    {/* Dropdown Menu */}
-                    {isMenuOpen && (
-                        <div className="absolute left-0 top-full mt-2 bg-black/90 border border-white/20 min-w-[150px] backdrop-blur-sm comic-border p-2">
-                            <Link
-                                href="/teams"
-                                className="block px-4 py-3 text-white hover:bg-[var(--accent)] hover:text-white font-display tracking-wider transition-colors"
-                            >
-                                TEAM
-                            </Link>
-                        </div>
-                    )}
-                </div>
-            </div>
+            <Navigation />
 
             {/* Background image */}
             <div className="absolute inset-0 z-0">
