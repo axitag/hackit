@@ -36,7 +36,7 @@ const prizes = [
         color: "#cd7f32",
         bgColor: "rgba(205,127,50,0.1)",
         scale: 0.75,
-        description: "Bronze but not broken. A force to be reckoned with.",
+        description: "Bronze but not broken.A force to be reckoned with.",
         points: 10,
     },
 ];
@@ -82,7 +82,7 @@ export default function Prizes() {
                 <div className="absolute inset-0 bg-linear-to-b from-(--bg) via-transparent to-(--bg)" />
             </div>
 
-            <div className="relative z-10 text-center mb-8 md:mb-12">
+            <div className="relative z-10 text-center mb-8 md:mb-12 flex flex-col gap-10">
                 <GlitchText
                     as="h2"
                     className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"

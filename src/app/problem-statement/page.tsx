@@ -186,12 +186,12 @@ export default function Tracks() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-black/60"
+                            className="fixed inset-0 z-50 flex flex-col items-center p-4 md:p-8 backdrop-blur-md bg-black/60 overflow-y-auto"
                             onClick={() => setSelectedTrack(null)}
                         >
-                            <div className="flex flex-col items-center w-full max-w-7xl gap-[50px]">
+                            <div className="flex flex-col items-center w-full max-w-7xl my-auto py-8">
                                 {/* Track Title Outside the Box */}
-                                <div className="mb-[20px]">
+                                <div className="mb-6 md:mb-8 shrink-0">
                                     <GlitchText as="h2" className="text-4xl md:text-6xl font-display text-white uppercase tracking-wider text-center">
                                         {selectedTrack.title}
                                     </GlitchText>
@@ -202,7 +202,7 @@ export default function Tracks() {
                                     animate={{ scale: 1, opacity: 1, y: 0 }}
                                     exit={{ scale: 0.95, opacity: 0, y: 20 }}
                                     onClick={(e) => e.stopPropagation()}
-                                    className="bg-[var(--surface)] border border-white/10 w-[95vw] max-w-7xl max-h-[90vh] overflow-y-auto comic-border relative flex flex-col"
+                                    className="bg-[#111] border border-white/10 w-[95vw] max-w-7xl comic-border relative flex flex-col shrink-0 mb-8"
                                 >
                                     <button
                                         onClick={() => setSelectedTrack(null)}
@@ -211,43 +211,39 @@ export default function Tracks() {
                                         <X size={24} />
                                     </button>
 
-                                    <div className="p-6 md:p-8 space-y-8">
-                                        {/* <div className="space-y-2">
-                                    <div className="text-[var(--accent)] font-label text-sm tracking-wider">TRACK: {selectedTrack.title}</div>
-                                    <h2 className="text-3xl md:text-4xl font-display text-white">{selectedTrack.issue}: PROBLEM STATEMENTS</h2>
-                                </div> */}
+                                    <div className="p-6 md:p-10 space-y-10">
 
                                         {/* Rules & Guidelines */}
-                                        <div className="bg-black/30 border border-white/5 p-6 rounded-lg">
-                                            <h3 className="text-xl font-display text-white mb-4 flex items-center">
-                                                <span className="bg-[var(--accent)] w-2 h-6 mr-3 inline-block"></span>
+                                        <div className="bg-black/30 border border-white/5 rounded-2xl p-6 md:p-8">
+                                            <h3 className="text-xl md:text-2xl font-display text-white mb-6 flex items-center tracking-wide">
+                                                <span className="bg-(--accent) w-2 h-6 md:h-8 mr-4 inline-block"></span>
                                                 Rules & Guidelines
                                             </h3>
-                                            <ul className="space-y-3">
+                                            <ul className="space-y-4">
                                                 {rules.map((rule, idx) => (
                                                     <li key={idx} className="flex text-white/80 font-body text-base md:text-lg leading-relaxed">
-                                                        <span className="text-[var(--accent)] mr-3 font-bold">•</span>
-                                                        <span className="flex-1">{rule}</span>
+                                                        <span className="text-(--accent) mr-3 md:mr-4 font-bold md:text-xl mt-[-2px]">▸</span>
+                                                        <span className="flex-1 tracking-widest">{rule}</span>
                                                     </li>
                                                 ))}
                                             </ul>
                                         </div>
 
                                         {/* Problem Statements Accordion */}
-                                        <div className="space-y-4">
+                                        <div className="space-y-6">
                                             {selectedTrack.problemStatements.map((ps) => (
-                                                <div key={ps.id} className="border border-white/10 bg-black/20 rounded-lg overflow-hidden transition-colors hover:border-white/20">
+                                                <div key={ps.id} className="border border-white/10 bg-black/20 rounded-xl overflow-hidden transition-colors hover:border-white/20">
                                                     <button
                                                         onClick={() => setExpandedPS(expandedPS === ps.id ? null : ps.id)}
-                                                        className="w-full text-left p-5 flex justify-between items-center group focus:outline-none"
+                                                        className="w-full text-left p-6 md:p-8 flex justify-between items-center group focus:outline-none"
                                                     >
-                                                        <span className="font-display text-xl md:text-2xl text-white group-hover:text-[var(--accent)] transition-colors">
+                                                        <span className="font-display text-xl md:text-2xl text-white group-hover:text-[var(--accent)] transition-colors tracking-wide">
                                                             Problem Statement ID: {ps.id}
                                                         </span>
                                                         {expandedPS === ps.id ? (
-                                                            <ChevronUp className="text-white/60 group-hover:text-white transition-colors" />
+                                                            <ChevronUp className="text-white/60 group-hover:text-white transition-colors shrink-0 ml-4" size={28} />
                                                         ) : (
-                                                            <ChevronDown className="text-white/60 group-hover:text-white transition-colors" />
+                                                            <ChevronDown className="text-white/60 group-hover:text-white transition-colors shrink-0 ml-4" size={28} />
                                                         )}
                                                     </button>
 
@@ -259,27 +255,27 @@ export default function Tracks() {
                                                                 exit={{ height: 0, opacity: 0 }}
                                                                 className="overflow-hidden"
                                                             >
-                                                                <div className="p-5 pt-0 border-t border-white/5 space-y-6">
+                                                                <div className="p-6 pt-0 md:p-8 md:pt-0 border-t border-white/5 space-y-8 mt-2">
                                                                     <div>
-                                                                        <h4 className="text-2xl md:text-3xl font-body text-[var(--accent)] font-bold mb-2">
+                                                                        <h4 className="text-2xl md:text-3xl font-body text-[var(--accent)] font-bold mb-4 tracking-wide">
                                                                             {ps.title}
                                                                         </h4>
-                                                                        <div className="inline-block bg-white/10 px-3 py-1 rounded text-sm md:text-base text-white/70 font-label tracking-wider mb-4">
+                                                                        {/* <div className="inline-block bg-white/10 px-4 py-2 rounded text-sm md:text-base text-white/70 font-label tracking-widest mb-6">
                                                                             Problem Statement ID: {ps.id}
-                                                                        </div>
-                                                                        <p className="text-white/80 font-body text-base md:text-lg leading-relaxed whitespace-pre-line">
+                                                                        </div> */}
+                                                                        <p className="text-white/80 font-body text-base md:text-xl leading-loose whitespace-pre-line tracking-wide">
                                                                             {ps.description}
                                                                         </p>
                                                                     </div>
 
                                                                     {ps.coreFunctionalities.length > 0 && (
                                                                         <div>
-                                                                            <h5 className="text-white font-bold font-body text-lg md:text-xl mb-3">Core Functionalities:</h5>
-                                                                            <ul className="space-y-2">
+                                                                            <h5 className="text-white font-bold font-body text-xl md:text-2xl mb-4 tracking-wide">Core Functionalities:</h5>
+                                                                            <ul className="space-y-4">
                                                                                 {ps.coreFunctionalities.map((func, idx) => (
-                                                                                    <li key={idx} className="flex text-white/80 font-body text-base md:text-lg leading-relaxed">
-                                                                                        <span className="text-[var(--accent)] mr-2">•</span>
-                                                                                        <span className="flex-1">{func}</span>
+                                                                                    <li key={idx} className="flex text-white/80 font-body text-base md:text-xl leading-relaxed">
+                                                                                        <span className="text-[var(--accent)] mr-3 md:mr-4 font-bold md:text-2xl mt-[-4px]">▸</span>
+                                                                                        <span className="flex-1 tracking-wide">{func}</span>
                                                                                     </li>
                                                                                 ))}
                                                                             </ul>
@@ -287,9 +283,9 @@ export default function Tracks() {
                                                                     )}
 
                                                                     {ps.note && (
-                                                                        <div className="bg-white/5 border border-white/10 p-4 rounded-md">
-                                                                            <p className="text-white/70 font-body text-base md:text-lg italic">
-                                                                                <span className="text-[var(--accent)] font-bold">Note: </span>
+                                                                        <div className="bg-white/5 border border-white/10 p-5 md:p-6 rounded-xl mt-6">
+                                                                            <p className="text-white/70 font-body text-base md:text-lg italic tracking-wide leading-relaxed">
+                                                                                <span className="text-[var(--accent)] font-bold mr-2">Note:</span>
                                                                                 {ps.note}
                                                                             </p>
                                                                         </div>

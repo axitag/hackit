@@ -29,14 +29,14 @@ export default function RefundPolicy() {
             <div className="fixed inset-0 z-0 pointer-events-none mix-blend-overlay opacity-30" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'0.2\'/%3E%3C/svg%3E")' }} />
 
             {/* Content Container */}
-            <section className="snap-section min-h-[100dvh] relative z-10 w-full pt-32 pb-24 px-6 md:px-12 flex-grow flex flex-col items-center">
+            <section className="snap-section min-h-dvh relative z-10 w-full pt-32 pb-24 px-6 md:px-12 grow flex flex-col items-center justify-center">
 
                 {/* Page Title */}
                 <motion.header
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="w-full text-center mb-16 relative"
+                    className="w-full text-center mb-16 relative flex flex-col gap-10"
                 >
                     <h1 className="font-display text-4xl sm:text-5xl md:text-7xl text-white tracking-widest drop-shadow-[2px_2px_0_#111]">
                         NO REFUND POLICY
@@ -54,94 +54,95 @@ export default function RefundPolicy() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="w-full max-w-[860px] bg-[#0a0a0a]/85 backdrop-blur-sm border border-white/5 border-l-2 border-l-[#E8192C]/50 p-12 md:p-24 lg:p-32 shadow-2xl relative"
+                    className="w-full flex flex-col justify-center items-center bg-[#141414] border-t border-t-white/10 border-r border-r-white/10 border-b border-b-white/10 border-l-2 border-l-[#E8192C]/70 shadow-2xl relative"
+                    style={{ padding: '3rem' }}
                 >
                     {/* Subtle Corner Accents */}
                     <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-white/20" />
                     <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#E8192C]/30" />
 
                     {/* Introductory Text */}
-                    <p className="text-white/80 text-base md:text-[16px] leading-[1.8] mb-12 italic">
+                    <p className="text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest mb-12 italic">
                         Thank you for registering for HACKIT 2025. Please read our No Refund Policy carefully before completing your registration.
                     </p>
 
                     <div className="space-y-20">
                         {/* Section 1 */}
-                        <section>
+                        <section className="w-full flex flex-col items-center justify-center gap-2">
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">1.</span> No Refunds After Registration
                             </h2>
-                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8]">
+                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest">
                                 Once a participant or team has successfully registered for HACKIT 2025, the registration fee is non-refundable and non-transferable under any circumstances.
                             </p>
                         </section>
 
                         {/* Section 2 */}
-                        <section>
+                        <section className="w-full flex flex-col items-center justify-center gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">2.</span> Event Cancellation or Modification
                             </h2>
-                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] mb-4">
+                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] mb-4 tracking-widest">
                                 In the unlikely event that HACKIT 2025 is postponed, rescheduled, or modified due to unforeseen circumstances (such as natural disasters, emergencies, or other unavoidable situations), the registration will remain valid for the rescheduled date.
                             </p>
-                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8]">
+                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest">
                                 No refunds will be provided in case of cancellation, rescheduling, or changes to the event format.
                             </p>
                         </section>
 
                         {/* Section 3 */}
-                        <section>
+                        <section className="w-full flex flex-col items-center justify-center gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">3.</span> Registration Confirmation
                             </h2>
-                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8]">
+                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest">
                                 Registration is only confirmed upon successful payment of the registration fee. Incomplete registrations or pending payments will not secure your spot in the hackathon.
                             </p>
                         </section>
 
                         {/* Section 4 */}
-                        <section>
+                        <section className="w-full flex flex-col items-center justify-center gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">4.</span> Team Changes
                             </h2>
-                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8]">
+                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest">
                                 Team composition changes are not permitted after registration closure. The registration fee cannot be transferred to different team members or other teams.
                             </p>
                         </section>
 
                         {/* Section 5 */}
-                        <section>
+                        <section className="w-full flex flex-col items-center justify-center gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">5.</span> Participation Requirements
                             </h2>
-                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] mb-4">
+                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest mb-4">
                                 Participants must adhere to all hackathon rules and guidelines.
                             </p>
                             <ul className="space-y-4">
-                                <li className="flex gap-3 text-white/80 text-base md:text-[16px] leading-[1.8]">
+                                <li className="flex gap-3 text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest">
                                     <span className="text-[#E8192C] mt-1 shrink-0">►</span>
-                                    <span>Failure to comply with the rules may result in disqualification without refund.</span>
+                                    <span className="tracking-widest">Failure to comply with the rules may result in disqualification without refund.</span>
                                 </li>
-                                <li className="flex gap-3 text-white/80 text-base md:text-[16px] leading-[1.8]">
+                                <li className="flex gap-3 text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest">
                                     <span className="text-[#E8192C] mt-1 shrink-0">►</span>
-                                    <span>All team members must be present during the event as per the schedule.</span>
+                                    <span className="tracking-widest">All team members must be present during the event as per the schedule.</span>
                                 </li>
                             </ul>
                         </section>
 
                         {/* Section 6 */}
-                        <section>
+                        <section className="w-full flex flex-col items-center justify-center gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">6.</span> Technical Issues
                             </h2>
-                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8]">
+                            <p className="text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest">
                                 HACKIT 2025 is not responsible for any technical issues participants may face during the event. No refunds will be provided for connectivity or hardware-related problems.
                             </p>
                         </section>
                     </div>
 
                     {/* Classifier Dossier / Contact Block */}
-                    <div className="mt-16 bg-[#111] border-2 border-[#222] p-6 md:p-8 relative">
+                    <div className="mt-16 bg-[#111] border-2 border-[#222] p-6 md:p-8 relative max-w-4xl mx-auto">
                         {/* Grunge Stamp */}
                         <div className="absolute top-0 right-4 -translate-y-1/2 rotate-12 bg-[#0a0a0a] border-2 border-[#E8192C] px-3 py-1 z-10">
                             <span className="font-display text-[#E8192C] text-lg uppercase tracking-widest mix-blend-screen opacity-90">

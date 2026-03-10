@@ -43,7 +43,7 @@ const coreTeam = [
 
 const SectionDivider = () => (
     <div className="w-full flex items-center justify-center py-16 md:py-24 opacity-80">
-        <div className="h-[1px] flex-grow bg-[#E8192C]/40" />
+        <div className="h-px grow bg-[#E8192C]/40" />
         <div className="mx-6 text-[#E8192C]">
             <svg width="32" height="32" viewBox="0 0 100 100" className="opacity-80">
                 <path d="M50 0 L50 100 M0 50 L100 50 M15 15 L85 85 M15 85 L85 15" stroke="currentColor" strokeWidth="1" />
@@ -51,7 +51,7 @@ const SectionDivider = () => (
                 <path d="M50 35 Q57 42 65 50 Q57 58 50 65 Q43 58 35 50 Q43 42 50 35 Z" fill="none" stroke="currentColor" strokeWidth="1" />
             </svg>
         </div>
-        <div className="h-[1px] flex-grow bg-[#E8192C]/40" />
+        <div className="h-px grow bg-[#E8192C]/40" />
     </div>
 );
 
@@ -65,7 +65,7 @@ const SectionHeader = ({ title }: { title: string }) => (
     >
         <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-widest uppercase inline-block relative group">
             <span className="text-[#E8192C]">».</span> <span className="italic">{title}</span>
-            <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#E8192C] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+            <span className="absolute -bottom-2 left-0 w-full h-px bg-[#E8192C] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
         </h2>
     </motion.div>
 );
@@ -80,7 +80,7 @@ const PortraitCard = ({ member, index }: { member: any, index: number }) => {
             className="group relative flex flex-col bg-[#111] border-2 border-[#1a1a1a] p-3 shadow-[4px_4px_0_#000] hover:shadow-[0_0_0_2px_#E8192C,6px_6px_0_#000] hover:-translate-y-1.5 transition-all duration-300 w-full max-w-[320px] mx-auto"
         >
             {/* Top Image Box */}
-            <div className="relative w-full overflow-hidden border-2 border-[#222] bg-[#1a1a1a] aspect-[3/4]">
+            <div className="relative w-full overflow-hidden border-2 border-[#222] bg-[#1a1a1a] aspect-3/4">
                 <div className="absolute inset-0 flex items-center justify-center opacity-10">
                     <span className="font-display text-6xl text-white">?</span>
                 </div>
@@ -148,7 +148,7 @@ export default function TeamPage() {
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24">
 
                     {/* --- MENTOR --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full snap-section flex flex-col justify-center gap-5 items-center py-20 relative">
                         <SectionHeader title="MENTOR" />
                         <div className="flex flex-wrap justify-center gap-10 w-full max-w-5xl mx-auto">
                             <div className="w-[210px] sm:w-[225px]">
@@ -163,7 +163,7 @@ export default function TeamPage() {
                         {/* --- FACULTY ADVISOR --- */}
                         {/* <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative"> */}
                         <SectionHeader title="FACULTY ADVISOR" />
-                        <div className="flex flex-wrap justify-center gap-10 md:gap-14 w-full max-w-5xl mx-auto">
+                        <div className="flex justify-center gap-5 md:gap-14 w-full max-w-5xl mx-auto">
                             {facultyAdvisors.map((member, i) => (
                                 <div key={i} className="w-[210px] sm:w-[225px]">
                                     <PortraitCard member={member} index={i} />
@@ -176,7 +176,7 @@ export default function TeamPage() {
                     </section>
 
                     {/* --- ORGANIZING TEAM --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full snap-section flex flex-col gap-5 justify-center items-center py-20 relative">
                         <SectionHeader title="ORGANIZING TEAM" />
                         <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 md:gap-x-12 w-full max-w-7xl mx-auto">
                             {organizingTeam.map((member, i) => (
@@ -191,7 +191,7 @@ export default function TeamPage() {
                     </section>
 
                     {/* --- DEVELOPER TEAM --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full snap-section flex flex-col gap-5 justify-center items-center py-20 relative">
                         <SectionHeader title="DEVELOPER TEAM" />
                         <div className="flex flex-wrap justify-center gap-10 md:gap-14 w-full max-w-5xl mx-auto">
                             {devTeam.map((member, i) => (
@@ -206,7 +206,7 @@ export default function TeamPage() {
                     </section>
 
                     {/* --- CORE TEAM --- */}
-                    <section className="w-full snap-section flex flex-col justify-center items-center py-20 relative">
+                    <section className="w-full snap-section flex flex-col  gap-5 justify-center items-center py-20 relative">
                         <SectionHeader title="CORE TEAM" />
                         <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 md:gap-x-12 w-full max-w-7xl mx-auto">
                             {coreTeam.map((member, i) => (

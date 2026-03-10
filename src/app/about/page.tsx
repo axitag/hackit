@@ -85,7 +85,7 @@ export default function AboutPage() {
 
                         {/* Left Column: About HackIT */}
                         <motion.article
-                            className="w-full lg:col-span-7 xl:col-span-8 newspaper-column projector-flicker text-left"
+                            className="w-full lg:col-span-7 xl:col-span-8 newspaper-column projector-flicker text-left flex flex-col gap-10"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.3 }}

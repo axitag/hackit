@@ -26,7 +26,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
             </div>
 
-            <div className="relative z-10" style={{ maxWidth: '72rem', margin: '0 auto', width: '100%' }}>
+            <div className="relative z-10 flex flex-col gap-10" style={{ maxWidth: '72rem', margin: '0 auto', width: '100%' }}>
                 {/* Section Title */}
                 <div className="text-center mb-8 md:mb-16">
                     <GlitchText
