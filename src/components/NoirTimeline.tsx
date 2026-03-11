@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef, memo } from "react";
+import Image from "next/image";
 import WorldMap from "./WorldMap";
 import FlightPath, { PlanePosition } from "./FlightPath";
 import CheckpointCard from "./CheckpointCard";
@@ -272,6 +273,17 @@ export default function NoirTimeline() {
                 overflow: "hidden",
             }}
         >
+            {/* Background Image */}
+            <div className="absolute inset-0 pointer-events-none z-0">
+                <Image
+                    src="/images/timeline_bg_2.png"
+                    alt="Timeline section background"
+                    fill
+                    className="object-cover opacity-40"
+                />
+                <div className="absolute inset-0 bg-linear-to-b from-(--bg) via-transparent to-(--bg)" />
+            </div>
+
             {/* ── Progress bar ── */}
             <div
                 ref={progressBarRef}

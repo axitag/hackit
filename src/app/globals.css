@@ -854,7 +854,7 @@ body {
 .map-container-inner {
   position: absolute;
   top: 53%;
-  left: 50%;
+  left: 70%;
   transform: translate(-50%, -50%);
   width: 50%;
   height: 75%;

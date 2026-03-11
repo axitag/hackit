@@ -22,7 +22,7 @@ export default function RefundPolicy() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-black/75" />
+                <div className="absolute inset-0 opacity-70" />
             </div>
 
             {/* Content Container */}
@@ -51,7 +51,7 @@ export default function RefundPolicy() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex flex-col bg-[#141414] border-t border-t-white/10 border-r border-r-white/10 border-b border-b-white/10 border-l-2 border-l-[#E8192C]/70 shadow-2xl relative"
+                    className="flex flex-col bg-[#141414]/90 border-t border-t-white/10 border-r border-r-white/10 border-b border-b-white/10 border-l-2 border-l-[#E8192C]/70 shadow-2xl relative "
                     style={{ padding: '3rem', maxWidth: '70rem', width: '100%', margin: '0 auto' }}
                 >
                     {/* Subtle Corner Accents */}
@@ -62,7 +62,7 @@ export default function RefundPolicy() {
                     <p className="text-white/80 text-base md:text-[16px] leading-[1.8] tracking-widest mb-12 italic">
                         Thank you for registering for HACKIT 2025. Please read our No Refund Policy carefully before completing your registration.
                     </p>
-
+                    <br></br>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
                         {/* Section 1 */}
                         <section className="w-full flex flex-col gap-2">

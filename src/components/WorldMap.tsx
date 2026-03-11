@@ -122,13 +122,13 @@ function MapContent({
                         <Geography
                             key={geo.rsmKey}
                             geography={geo}
-                            fill="#1a1220"
-                            stroke="#2a1e30"
+                            fill="#2a2a2a"
+                            stroke="#3a3a3a"
                             strokeWidth={0.5}
                             style={{
-                                default: { outline: "none", fill: "#1a1220" },
-                                hover: { outline: "none", fill: "#1a1220" },
-                                pressed: { outline: "none", fill: "#1a1220" },
+                                default: { outline: "none", fill: "#2a2a2a" },
+                                hover: { outline: "none", fill: "#333333" },
+                                pressed: { outline: "none", fill: "#2a2a2a" },
                             }}
                         />
                     ))
@@ -296,7 +296,7 @@ const WorldMapInner = function WorldMap({
                 style={{
                     width: "100%",
                     height: "100%",
-                    background: "#0f0a14",
+                    background: "rgba(0,0,0,0.2)",
                 }}
             >
                 <MapContent

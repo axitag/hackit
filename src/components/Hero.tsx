@@ -165,7 +165,7 @@ export default function Hero() {
                 {/* Section 2: Aikyam + Amity Logos */}
                 <motion.div
                     className="flex flex-col items-center justify-center"
-                    style={{ marginTop: "0.5rem" }}
+                    style={{ marginTop: "3rem" }}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}

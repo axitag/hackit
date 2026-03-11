@@ -59,28 +59,18 @@ export default function Navigation() {
                         className="fixed inset-0 bg-[#0a0a0a] z-[110] flex flex-col overflow-hidden"
                     >
                         {/* Background Image */}
-                        <div className="absolute inset-0 pointer-events-none z-0 transform-gpu h-[120%]">
+                        <div className="absolute inset-0 pointer-events-none z-0 transform-gpu h-full">
                             <Image
-                                src="/images/ham_bg.png"
+                                src="/images/ham_bg_3.png"
                                 alt="Menu Background"
                                 fill
-                                className="object-cover opacity-40"
+                                className="object-cover opacity-60"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/10" />
                         </div>
 
                         {/* Top Bar */}
                         <div className="relative z-10 p-6 sm:p-8 flex justify-end items-start w-full">
-                            {/* Logo */}
-                            {/* <div className="w-full sm:w-20 sm:h-20 relative">
-                                <Image
-                                    src="/images/hackit_logo_2.png"
-                                    alt="Logo"
-                                    width={300}
-                                    height={300}
-                                    className="object-contain"
-                                />
-                            </div> */}
-
                             {/* Close Button */}
                             <button
                                 onClick={() => setIsMenuOpen(false)}

@@ -104,9 +104,9 @@ export default function Tracks() {
                         src="/images/bg_track_2.png"
                         alt="Tracks section background"
                         fill
-                        className="object-cover opacity-20"
+                        className="object-cover opacity-70"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-white/10 opacity-100" />
                 </div>
 
                 <div className="relative z-10 text-center mb-6 md:mb-16">
