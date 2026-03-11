@@ -88,27 +88,10 @@ const contactSocials = [
 export default function RegisterCTA() {
     return (
         <div className="snap-section-auto relative w-full overflow-hidden min-h-[100dvh] bg-[#0a0a0a]">
-            {/* ===== UPPER STRIP ===== */}
-            {/* <div className="absolute top-0 left-0 w-full z-20 pointer-events-none">
-                <Image
-                    src="/images/upper_strip.png"
-                    alt="Upper Strip Pattern"
-                    width={1920}
-                    height={100}
-
-                    className="object-contain opacity-90"
-                />
-            </div> */}
-
-            {/* ===== SPIDERMAN TICKER ===== */}
-            {/* <div className="w-full relative z-20">
-                <SpidermanNoirTicker />
-            </div> */}
-
             {/* ===== REGISTER CTA SECTION ===== */}
             <section
                 id="register"
-                className="absolute top-6/12 left-0 right-0 -translate-y-1/2 w-full flex flex-col items-center justify-center px-6 md:px-12 py-16 md:py-24"
+                className="absolute top-6/12 left-0 right-0 -translate-y-1/2 w-full flex flex-col items-center justify-center px-4 md:px-12 py-16 md:py-24"
             >
                 {/* Background image */}
                 <div className="absolute inset-0 z-0">
@@ -116,7 +99,7 @@ export default function RegisterCTA() {
                         src="/images/footer_bg.png"
                         alt="Register section background"
                         fill
-                        className="object-contain opacity-40"
+                        className="object-cover opacity-50"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-[var(--bg)]/80" />
                     {/* Dark vignette overlay */}
@@ -158,7 +141,7 @@ export default function RegisterCTA() {
 
                     {/* Subtext */}
                     <motion.p
-                        className="mt-4 md:mt-6 font-body text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed"
+                        className="mt-4 md:mt-6 font-body text-base md:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -181,7 +164,7 @@ export default function RegisterCTA() {
                                 <span className="font-display text-2xl sm:text-3xl md:text-4xl text-[var(--accent)] block">
                                     {stat.value}
                                 </span>
-                                <span className="font-label text-[10px] md:text-xs text-white/40 tracking-widest mt-1 block">
+                                <span className="font-label text-[10px] md:text-xs text-white/70 tracking-widest mt-1 block">
                                     {stat.label}
                                 </span>
                             </div>
@@ -223,7 +206,7 @@ export default function RegisterCTA() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.65, duration: 0.5 }}
                     >
-                        <span className="font-label text-[10px] md:text-xs text-white/30 tracking-[0.3em]">
+                        <span className="font-label text-[10px] md:text-xs text-white/70 tracking-[0.3em]">
                             FOLLOW THE MULTIVERSE
                         </span>
                         <div className="flex items-center gap-3">
@@ -243,23 +226,10 @@ export default function RegisterCTA() {
             </section>
 
             {/* ===== 3-COLUMN FOOTER SECTION ===== */}
-            <footer className="absolute bottom-0 left-0 right-0 w-full bg-[#0a0a0a] px-6 md:px-12 lg:px-16 py-8 md:py-12 z-10">
-                <div className="w-full flex flex-col md:flex-row justify-between gap-12 lg:gap-16">
+            <footer className="absolute bottom-0 left-0 right-0 w-full z-10" style={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+                <div className="w-full flex flex-col md:flex-row justify-between items-center" style={{ gap: '3rem' }}>
                     {/* Column 1: Contact */}
-                    {/* <div className="flex flex-col space-y-6 flex-[2]">
-                        <h3 className="font-display text-2xl tracking-widest uppercase text-white flex items-center gap-2">
-                            <span className="text-[var(--accent)]">»</span> Contact
-                        </h3>
-                        <div className="space-y-4 font-body text-white/70">
-                            <a href="mailto:asset.aikyam@gmail.com" className="hover:text-[var(--accent)] transition-colors block text-lg tracking-wide">
-                                asset.aikyam@gmail.com
-                            </a>
-                            <div className="space-y-2 mt-4 text-base">
-                                <p>Saumya Singh: <span className="text-white/50">+91 81027 73833</span></p>
-                                <p>Soubhagya Srivastava: <span className="text-white/50">+91 89670 10103</span></p>
-                            </div>
-                        </div>
-                    </div> */}
+
 
                     {/* contact */}
                     <motion.div
@@ -267,10 +237,10 @@ export default function RegisterCTA() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
-                        className="flex-2 justify-center w-full items-center flex flex-col"
+                        className="flex-1 w-full items-start flex flex-col"
                     >
                         <div className="w-full max-w-[520px] flex flex-col space-y-6">
-                            <h3 className="font-display text-3xl md:text-4xl text-white tracking-widest uppercase flex items-center gap-2">
+                            <h3 className="font-display text-2xl md:text-2xl text-white tracking-widest uppercase flex items-center gap-2">
                                 <span className="text-[#E8192C]">».</span>{" "}
                                 <span className="italic">CONTACT</span>
                             </h3>
@@ -278,12 +248,12 @@ export default function RegisterCTA() {
                             {/* Dossier Card Container */}
                             <div className="relative transform-gpu -rotate-1 bg-[#1a1410] border-2 border-[#333] p-6 sm:p-8 md:p-10 shadow-[8px_8px_0_rgba(232,25,44,0.15)] group mt-4">
                                 {/* Tape / Pins */}
-                                <div
+                                {/* <div
                                     className="absolute -top-3 -left-3 w-8 h-8 bg-[#E8192C]/80 rotate-12 shadow-sm"
                                     style={{
                                         clipPath: "polygon(0 10%, 100% 0, 95% 100%, 5% 90%)",
                                     }}
-                                />
+                                /> */}
                                 <div
                                     className="absolute -bottom-3 -right-3 w-8 h-8 bg-[#E8192C]/80 -rotate-12 shadow-sm"
                                     style={{
@@ -366,11 +336,11 @@ export default function RegisterCTA() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
-                        className="flex-2 justify-center w-full flex flex-col items-center"
+                        className="flex-1 justify-center w-full flex flex-col items-center"
                     >
                         <div className="w-full max-w-130 flex flex-col space-x-6">
                             <h3 className="font-display text-2xl tracking-widest uppercase text-white flex items-center gap-2">
-                                <span className="text-(--accent)">»</span> Quick Links
+                                <span className="text-(--accent)">».</span> Quick Links
                             </h3>
                             <div className="grid grid-cols-2 gap-y-4 gap-x-6 font-body text-white/70">
                                 {quickLinks.map((link) => (
@@ -387,23 +357,22 @@ export default function RegisterCTA() {
                     </motion.div>
 
                     {/* Column 3: Map */}
-                    <motion.div
+                    {/* <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
-                        className="flex-2 w-full flex flex-col justify-center items-center"
+                        className="flex-1 w-full flex flex-col items-end"
                     >
-                        <div className="w-full max-w-130 flex flex-col space-y-6">
-                            <h3 className="font-display text-2xl tracking-widest uppercase text-white flex items-center gap-2">
+                        <div className="w-full max-w-[520px] flex flex-col items-end space-y-6">
+                            <h3 className="font-display text-2xl tracking-widest uppercase text-white flex items-end gap-2">
                                 <span className="text-(--accent)">»</span> Location
                             </h3>
-                            {/* Map Noir Frame */}
-                            <div className="relative w-2/3 h-60 bg-[#111] p-3 border-4 border-[#1a1a1a] shadow-[10px_10px_0_#000] group">
-                                {/* Inner distressed border / iframe container */}
-                                <div className="relative w-full h-full border border-[#444] overflow-hidden">
-                                    {/* The Map */}
-                                    <iframe
+                            <div className="relative bg-[#111] border-4 border-[#1a1a1a] shadow-[10px_10px_0_#000] group" style={{ width: '100%', maxWidth: '320px', aspectRatio: '1 / 1', padding: '0.75rem' }}>
+
+                                <div className="relative w-full h-full border border-[#444] overflow-hidden"> */}
+                    {/* The Map */}
+                    {/* <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4651.813641740845!2d85.0520668762238!3d25.61231131476043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed56457e773c5d%3A0x26f4637f762e3747!2sAmity%20University%2C%20Patna!5e1!3m2!1sen!2sin!4v1739893950078!5m2!1sen!2sin"
                                         width="100%"
                                         height="100%"
@@ -413,10 +382,10 @@ export default function RegisterCTA() {
                                         referrerPolicy="no-referrer-when-downgrade"
                                         title="Hackathon Location"
                                         className="absolute inset-0 z-0 transition-all duration-700 filter sepia-[0.4] contrast-[1.2] brightness-[0.7] group-hover:sepia-[0.2] group-hover:contrast-[1.1] group-hover:brightness-[0.9]"
-                                    />
+                                    /> */}
 
-                                    {/* Map Overlays (Halftone & Vignette) */}
-                                    <div
+                    {/* Map Overlays (Halftone & Vignette) */}
+                    {/* <div
                                         className="absolute inset-0 z-10 opacity-30 pointer-events-none mix-blend-multiply"
                                         style={{
                                             backgroundImage:
@@ -424,10 +393,10 @@ export default function RegisterCTA() {
                                             backgroundSize: "3px 3px",
                                         }}
                                     />
-                                    <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.8)]" />
+                                    <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.8)]" /> */}
 
-                                    {/* Red Crosshair SVG */}
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none opacity-80 flex items-center justify-center">
+                    {/* Red Crosshair SVG */}
+                    {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none opacity-80 flex items-center justify-center">
                                         <svg
                                             width="60"
                                             height="60"
@@ -483,21 +452,59 @@ export default function RegisterCTA() {
                                                 strokeWidth="2"
                                             />
                                         </svg>
-                                    </div>
+                                    </div> */}
 
-                                    {/* Open in Maps CTA Button */}
-                                    <a
+                    {/* Open in Maps CTA Button */}
+                    {/* <a
                                         href="https://maps.google.com/?q=Amity+University+Patna"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="absolute bottom-4 right-4 z-30 bg-[#E8192C] text-white font-display text-lg md:text-xl uppercase tracking-widest px-6 py-2 -skew-x-6 border-b-4 border-r-4 border-[#8B0000] hover:translate-y-[2px] hover:translate-x-[2px] hover:border-b-2 hover:border-r-2 transition-all active:translate-y-[4px] active:translate-x-[4px] active:border-0 shadow-lg"
                                     >
                                         OPEN IN MAPS ▸
-                                    </a>
+                                    </a> */}
+                    {/* </div>
+                            </div>
+                        </div>
+                    </motion.div> */}
+
+                    <div style={{ width: '100%', maxWidth: '320px', paddingTop: '2rem' }}>
+                        <h3 className="font-display text-2xl md:text-2xl text-white tracking-widest uppercase flex items-center gap-2">
+                            <span className="text-[#E8192C]">».</span>{" "}
+                            <span className="italic">LOCATION</span>
+                        </h3>
+                        {/* Noir map frame */}
+                        <div className="relative group" style={{ border: '4px solid #1a1a1a', boxShadow: '8px 8px 0 #000', background: '#111', padding: '0.5rem' }}>
+                            <div className="relative overflow-hidden" style={{ width: '100%', height: '200px' }}>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4651.813641740845!2d85.0520668762238!3d25.61231131476043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed56457e773c5d%3A0x26f4637f762e3747!2sAmity%20University%2C%20Patna!5e1!3m2!1sen!2sin!4v1739893950078!5m2!1sen!2sin"
+                                    className="absolute inset-0 transition-all duration-700 filter sepia-[0.4] contrast-[1.2] brightness-[0.7] group-hover:sepia-[0.1] group-hover:contrast-[1.1] group-hover:brightness-[0.9]"
+                                    style={{ border: 0, width: '100%', height: '100%' }}
+                                    allowFullScreen={true}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                ></iframe>
+                                {/* Halftone overlay */}
+                                <div
+                                    className="absolute inset-0 z-10 opacity-25 pointer-events-none mix-blend-multiply"
+                                    style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '3px 3px' }}
+                                />
+                                {/* Vignette */}
+                                <div className="absolute inset-0 z-10 pointer-events-none" style={{ boxShadow: 'inset 0 0 60px rgba(0,0,0,0.8)' }} />
+                                {/* Crosshair */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none opacity-70">
+                                    <svg width="50" height="50" viewBox="0 0 100 100" className="text-[#E8192C]">
+                                        <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+                                        <circle cx="50" cy="50" r="5" fill="currentColor" className="animate-pulse" />
+                                        <line x1="50" y1="5" x2="50" y2="30" stroke="currentColor" strokeWidth="2" />
+                                        <line x1="50" y1="70" x2="50" y2="95" stroke="currentColor" strokeWidth="2" />
+                                        <line x1="5" y1="50" x2="30" y2="50" stroke="currentColor" strokeWidth="2" />
+                                        <line x1="70" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="2" />
+                                    </svg>
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </footer>
         </div>

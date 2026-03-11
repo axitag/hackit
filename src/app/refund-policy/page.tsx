@@ -8,7 +8,7 @@ import RegisterCTA from "@/components/RegisterCTA";
 
 export default function RefundPolicy() {
     return (
-        <main className="snap-container min-h-screen relative bg-[#0a0a0a] text-[#f0ece0] font-body flex flex-col w-full selection:bg-[#E8192C] selection:text-white">
+        <main className="min-h-screen relative bg-[#0a0a0a] text-[#f0ece0] font-body flex flex-col w-full selection:bg-[#E8192C] selection:text-white">
 
             {/* Global Navbar */}
             <Navigation />
@@ -25,11 +25,8 @@ export default function RefundPolicy() {
                 <div className="absolute inset-0 bg-black/75" />
             </div>
 
-            {/* Grain/Noise Overlay */}
-            <div className="fixed inset-0 z-0 pointer-events-none mix-blend-overlay opacity-30" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'0.2\'/%3E%3C/svg%3E")' }} />
-
             {/* Content Container */}
-            <section className="snap-section min-h-dvh relative z-10 w-full pt-32 pb-24 px-6 md:px-12 grow flex flex-col items-center justify-center">
+            <section className="relative z-10 w-full px-6 md:px-12 grow flex flex-col items-center" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
 
                 {/* Page Title */}
                 <motion.header
@@ -54,8 +51,8 @@ export default function RefundPolicy() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="w-full flex flex-col justify-center items-center bg-[#141414] border-t border-t-white/10 border-r border-r-white/10 border-b border-b-white/10 border-l-2 border-l-[#E8192C]/70 shadow-2xl relative"
-                    style={{ padding: '3rem' }}
+                    className="flex flex-col bg-[#141414] border-t border-t-white/10 border-r border-r-white/10 border-b border-b-white/10 border-l-2 border-l-[#E8192C]/70 shadow-2xl relative"
+                    style={{ padding: '3rem', maxWidth: '70rem', width: '100%', margin: '0 auto' }}
                 >
                     {/* Subtle Corner Accents */}
                     <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-white/20" />
@@ -66,9 +63,9 @@ export default function RefundPolicy() {
                         Thank you for registering for HACKIT 2025. Please read our No Refund Policy carefully before completing your registration.
                     </p>
 
-                    <div className="space-y-20">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
                         {/* Section 1 */}
-                        <section className="w-full flex flex-col items-center justify-center gap-2">
+                        <section className="w-full flex flex-col gap-2">
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">1.</span> No Refunds After Registration
                             </h2>
@@ -78,7 +75,7 @@ export default function RefundPolicy() {
                         </section>
 
                         {/* Section 2 */}
-                        <section className="w-full flex flex-col items-center justify-center gap-2" >
+                        <section className="w-full flex flex-col gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">2.</span> Event Cancellation or Modification
                             </h2>
@@ -91,7 +88,7 @@ export default function RefundPolicy() {
                         </section>
 
                         {/* Section 3 */}
-                        <section className="w-full flex flex-col items-center justify-center gap-2" >
+                        <section className="w-full flex flex-col gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">3.</span> Registration Confirmation
                             </h2>
@@ -101,7 +98,7 @@ export default function RefundPolicy() {
                         </section>
 
                         {/* Section 4 */}
-                        <section className="w-full flex flex-col items-center justify-center gap-2" >
+                        <section className="w-full flex flex-col gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">4.</span> Team Changes
                             </h2>
@@ -111,7 +108,7 @@ export default function RefundPolicy() {
                         </section>
 
                         {/* Section 5 */}
-                        <section className="w-full flex flex-col items-center justify-center gap-2" >
+                        <section className="w-full flex flex-col gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">5.</span> Participation Requirements
                             </h2>
@@ -131,7 +128,7 @@ export default function RefundPolicy() {
                         </section>
 
                         {/* Section 6 */}
-                        <section className="w-full flex flex-col items-center justify-center gap-2" >
+                        <section className="w-full flex flex-col gap-2" >
                             <h2 className="font-display text-xl md:text-2xl text-white tracking-widest uppercase mb-4 flex items-baseline gap-3">
                                 <span className="text-[#E8192C]">6.</span> Technical Issues
                             </h2>
@@ -142,7 +139,7 @@ export default function RefundPolicy() {
                     </div>
 
                     {/* Classifier Dossier / Contact Block */}
-                    <div className="mt-16 bg-[#111] border-2 border-[#222] p-6 md:p-8 relative max-w-4xl mx-auto">
+                    <div className="bg-[#111] border-2 border-[#222] relative" style={{ marginTop: '2.5rem', padding: '1.5rem 2rem' }}>
                         {/* Grunge Stamp */}
                         <div className="absolute top-0 right-4 -translate-y-1/2 rotate-12 bg-[#0a0a0a] border-2 border-[#E8192C] px-3 py-1 z-10">
                             <span className="font-display text-[#E8192C] text-lg uppercase tracking-widest mix-blend-screen opacity-90">

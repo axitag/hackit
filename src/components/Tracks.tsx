@@ -23,7 +23,7 @@ const tracks: Track[] = [
     {
         issue: "#002",
         title: "Web Dev",
-        tagline: "Knowledge is the only superpower.",
+        tagline: "Code the shadows. Ship the night.",
         image: "/images/track-origin.png",
 
     },
@@ -36,10 +36,9 @@ const tracks: Track[] = [
     },
     {
         issue: "#004",
-        title: "Open Innovation",
-        tagline: "No rules. No limits. No mercy.",
+        title: "App Development",
+        tagline: "Swipe. Tap. Dominate.",
         image: "/images/track-dimension.png",
-
     },
 ];
 
@@ -54,9 +53,9 @@ export default function Tracks() {
                     src="/images/bg_track_2.png"
                     alt="Tracks section background"
                     fill
-                    className="object-cover opacity-20"
+                    className="object-cover opacity-70"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-white/10 opacity-100" />
             </div>
 
             <div className="relative z-10 text-center mb-6 md:mb-16">

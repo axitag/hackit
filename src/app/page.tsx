@@ -8,8 +8,9 @@ import Prizes from "@/components/Prizes";
 import FAQ from "@/components/FAQ";
 import RegisterCTA from "@/components/RegisterCTA";
 import Footer from "@/components/Footer";
-import About from "@/components/About";
+import Welcome from "@/components/Welcome";
 import Navigation from "@/components/Navigation";
+import NoirTimeline from "@/components/NoirTimeline";
 
 
 export default function Home() {
@@ -25,9 +26,9 @@ export default function Home() {
     <main className={`snap-container ${!flickerDone ? "page-flicker" : ""}`}>
       <Navigation />
       <Hero />
-      <About />
+      <Welcome />
       <Tracks />
-      <Schedule />
+      <NoirTimeline />
       <Prizes />
       <FAQ />
       <RegisterCTA />

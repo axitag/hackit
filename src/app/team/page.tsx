@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import RegisterCTA from '@/components/RegisterCTA';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import GlitchText from '@/components/GlitchText';
 
 // --- DATA ---
 const mentor = [
@@ -94,7 +95,7 @@ const PortraitCard = ({ member, index }: { member: any, index: number }) => {
 
                 {/* Overlay Texture */}
                 <div
-                    className="absolute inset-0 z-10 opacity-30 pointer-events-none mix-blend-multiply"
+                    className="absolute inset-0 z-10 opacity-30 pointer-events-none mix-blend-multiply group-hover:opacity-0 transition-opacity duration-500"
                     style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '3px 3px' }}
                 />
             </div>
@@ -128,7 +129,7 @@ export default function TeamPage() {
     if (!mounted) return null;
 
     return (
-        <main className="snap-container bg-[#0a0a0a] relative flex flex-col items-center w-full">
+        <main className="min-h-screen bg-[#0a0a0a] relative flex flex-col items-center w-full">
             <Navigation />
 
             {/* ── TOP SECTION (TEAMS) WITH BACKGROUND ── */}
@@ -147,8 +148,18 @@ export default function TeamPage() {
                 {/* ── MAIN CONTENT CONTAINER ── */}
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24">
 
+                    {/* Page Title */}
+                    <div className="w-full flex flex-col items-center" style={{ paddingTop: '6rem', paddingBottom: '2rem' }}>
+                        <GlitchText
+                            as="h1"
+                            className="font-display text-4xl sm:text-6xl md:text-8xl text-white tracking-wider"
+                        >
+                            THE COUNCIL
+                        </GlitchText>
+                    </div>
+
                     {/* --- MENTOR --- */}
-                    <section className="w-full snap-section flex flex-col justify-center gap-5 items-center py-20 relative">
+                    <section className="w-full flex flex-col justify-center gap-5 items-center relative" style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
                         <SectionHeader title="MENTOR" />
                         <div className="flex flex-wrap justify-center gap-10 w-full max-w-5xl mx-auto">
                             <div className="w-[210px] sm:w-[225px]">
@@ -176,7 +187,7 @@ export default function TeamPage() {
                     </section>
 
                     {/* --- ORGANIZING TEAM --- */}
-                    <section className="w-full snap-section flex flex-col gap-5 justify-center items-center py-20 relative">
+                    <section className="w-full flex flex-col gap-5 justify-center items-center relative" style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
                         <SectionHeader title="ORGANIZING TEAM" />
                         <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 md:gap-x-12 w-full max-w-7xl mx-auto">
                             {organizingTeam.map((member, i) => (
@@ -191,7 +202,7 @@ export default function TeamPage() {
                     </section>
 
                     {/* --- DEVELOPER TEAM --- */}
-                    <section className="w-full snap-section flex flex-col gap-5 justify-center items-center py-20 relative">
+                    <section className="w-full flex flex-col gap-5 justify-center items-center relative" style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
                         <SectionHeader title="DEVELOPER TEAM" />
                         <div className="flex flex-wrap justify-center gap-10 md:gap-14 w-full max-w-5xl mx-auto">
                             {devTeam.map((member, i) => (
@@ -206,7 +217,7 @@ export default function TeamPage() {
                     </section>
 
                     {/* --- CORE TEAM --- */}
-                    <section className="w-full snap-section flex flex-col  gap-5 justify-center items-center py-20 relative">
+                    <section className="w-full flex flex-col gap-5 justify-center items-center relative" style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
                         <SectionHeader title="CORE TEAM" />
                         <div className="flex flex-wrap justify-center gap-x-10 gap-y-12 md:gap-x-12 w-full max-w-7xl mx-auto">
                             {coreTeam.map((member, i) => (

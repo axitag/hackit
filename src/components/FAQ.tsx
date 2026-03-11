@@ -56,7 +56,7 @@ export default function FAQ() {
                     src="/images/transmissions_bg.png"
                     alt="Transmissions section background"
                     fill
-                    className="object-cover opacity-20"
+                    className="object-cover opacity-40"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
             </div>

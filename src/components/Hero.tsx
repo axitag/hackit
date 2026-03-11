@@ -117,31 +117,18 @@ export default function Hero() {
                 </motion.span>
             ))}
 
-            {/* Upper-left logo — akiyam (moved below HackIT logo, no glitch) */}
-
-            {/* Upper-right logo — bg_remove_logo */}
-
-
-            {/* Main content */}
-            <div className="relative z-10 text-center px-4">
-                {/* Title + Tagline container */}
+            {/* Main content — 4-section flex-col container */}
+            <div
+                className="relative z-10 flex flex-col items-center justify-center w-full h-full"
+                style={{ padding: "2rem 1rem" }}
+            >
+                {/* Section 1: HackIT Logo */}
                 <motion.div
-                    className="inline-flex flex-col items-center"
+                    className="flex items-center justify-center"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    {/* <GlitchText
-                        as="h1"
-                        persistent
-                        className="font-display text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] leading-none text-white tracking-wider"
-                    >
-                        <span style={{ display: "inline-block", transform: "rotate(-2deg)" }}>
-                            HACK IT
-                        </span>
-                    </GlitchText> */}
-
-                    {/* HACK IT logo image */}
                     <GlitchImage
                         src="/images/hackit_logo_2.png"
                         alt="HACK IT logo"
@@ -149,78 +136,146 @@ export default function Hero() {
                         height={400}
                         className="w-[280px] sm:w-[400px] md:w-[600px] lg:w-[800px] h-auto"
                     />
-                    <div className="flex items-center">
+                </motion.div>
 
-                        {/* Akiyam logo — below HackIT logo */}
+                {/* Section 2: Aikyam + Amity Logos */}
+                {/* <motion.div
+                    className="flex items-center justify-center"
+                    style={{ marginTop: "0.5rem" }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                    <Image
+                        src="/images/akiyam.png"
+                        alt="Akiyam logo"
+                        width={300}
+                        height={300}
+                        className="w-[200px] md:w-[280px] lg:w-[360px] h-auto filter brightness-100"
+                    />
+                    <Image
+                        src="/images/amity_bg_2.png"
+                        alt="Amity logo"
+                        width={300}
+                        height={300}
+                        className="w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px] h-auto filter brightness-100"
+                    />
+                </motion.div> */}
+
+                {/* Section 2: Aikyam + Amity Logos */}
+                <motion.div
+                    className="flex flex-col items-center justify-center"
+                    style={{ marginTop: "0.5rem" }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                >
+
+                    {/* Logos row */}
+                    <div className="flex items-center justify-center gap-4">
                         <Image
                             src="/images/akiyam.png"
                             alt="Akiyam logo"
                             width={300}
                             height={300}
-                            className="w-[200px] md:w-[280px] lg:w-[360px] h-auto filter brightness-100"
+                            className="w-[160px] md:w-[220px] lg:w-[280px] h-auto filter brightness-100"
                         />
-
                         <Image
                             src="/images/amity_bg_2.png"
                             alt="Amity logo"
                             width={300}
                             height={300}
-                            className="w-[140px] xs:w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px] h-auto filter brightness-100"
+                            className="w-[120px] sm:w-[140px] md:w-[160px] lg:w-[180px] h-auto filter brightness-100"
                         />
                     </div>
-
-                    {/* <div className="self-end w-[55%] pr-[2%] -mt-1 md:-mt-2">
-                        <GlitchSubtext
-                            text="IDEA, CREATIVITY, INNOVATIONS"
-                            className="font-display text-[0.4rem] sm:text-[0.5rem] md:text-xs lg:text-sm text-white tracking-[0.2em] md:tracking-[0.3em] w-full text-right"
-                        />
-                    </div> */}
                 </motion.div>
 
-                {/* Subtitle */}
-                {/* <motion.div
-                    className="mt-4 md:mt-6"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                >
-                    <p
-                        className="font-body text-base sm:text-lg md:text-2xl text-[var(--text)] typewriter inline-block"
+
+                {/* Bottom Elements */}
+                <div className="absolute bottom-8 sm:bottom-12 w-full flex flex-col items-center z-20 px-4">
+                    {/* Action Buttons */}
+                    <div
+                        className="flex flex-col items-center w-full md:flex-row md:justify-center"
+                        style={{ marginBottom: "1.25rem", gap: "0.75rem" }}
                     >
-                        Break the code. Break the multiverse.
-                    </p>
-                </motion.div> */}
+                        <motion.a
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+                            target="_blank"
+                            className="relative font-display text-sm sm:text-base tracking-wider bg-[var(--accent)] text-white shadow-[0_0_20px_rgba(232,0,61,0.4),0_0_40px_rgba(232,0,61,0.2)] hover:shadow-[0_0_30px_rgba(232,0,61,0.6),0_0_60px_rgba(232,0,61,0.3)] hover:scale-105 active:scale-95 transition-all duration-200 inline-block w-full md:w-auto text-center glitch-hover cursor-not-allowed opacity-70"
+                            style={{
+                                clipPath: "polygon(0% 0%, 98% 2%, 100% 96%, 1% 100%)",
+                                padding: "0.625rem 1.5rem",
+                            }}
+                            aria-label="Register for Hackathon"
+                        >
+                            Hackathon registrations closed
+                        </motion.a>
 
-            </div>
+                        <motion.a
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+                            href="/ppt/ppt.pptx"
+                            download="AMIHACKS-Template.pptx"
+                            className="relative font-display text-sm sm:text-base tracking-wider border-[3px] border-white text-white shadow-[4px_4px_0_#1a1a1a,inset_0_0_0_1px_rgba(255,255,255,0.05)] hover:bg-white hover:text-[var(--bg)] hover:scale-105 active:scale-95 transition-all duration-200 inline-block w-full md:w-auto text-center glitch-hover"
+                            style={{
+                                clipPath: "polygon(1% 2%, 100% 0%, 98% 100%, 0% 97%)",
+                                padding: "0.625rem 1.5rem",
+                            }}
+                            aria-label="Download Template"
+                        >
+                            Download Template &gt;
+                        </motion.a>
 
-            {/* Bottom Elements */}
-            <div className="absolute bottom-8 sm:bottom-12 w-full flex flex-col items-center z-20 px-4">
-                {/* CTA Button */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.2, duration: 0.5 }}
-                >
-                    <button
-                        className="relative font-display text-lg sm:text-xl md:text-2xl bg-[var(--accent)] text-white px-12 py-3 sm:px-10 sm:py-4 md:px-14 md:py-5 tracking-wider pulse-glow ink-splat transition-transform hover:scale-105 active:scale-95"
-                        style={{
-                            clipPath:
-                                "polygon(0% 0%, 98% 2%, 100% 96%, 1% 100%)",
-                        }}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 1.1, ease: "easeOut" }}
+                            className="w-full md:w-auto"
+                        >
+                            <Link
+                                href="/problem-statement"
+                                className="relative font-display text-sm sm:text-base tracking-wider border-[3px] border-white text-white shadow-[4px_4px_0_#1a1a1a,inset_0_0_0_1px_rgba(255,255,255,0.05)] hover:bg-white hover:text-[var(--bg)] hover:scale-105 active:scale-95 transition-all duration-200 inline-block w-full text-center glitch-hover"
+                                style={{
+                                    clipPath: "polygon(2% 0%, 99% 3%, 100% 98%, 0% 100%)",
+                                    padding: "0.625rem 1.5rem",
+                                }}
+                                aria-label="View Problem Statements"
+                            >
+                                Problem Statement &gt;
+                            </Link>
+                        </motion.div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 1.2, duration: 0.5 }}
                     >
-                        Break the code. Break the multiverse.
-                    </button>
-                </motion.div>
+                        <button
+                            className="relative font-display text-lg sm:text-xl md:text-2xl bg-[var(--accent)] text-white px-12 py-3 sm:px-10 sm:py-4 md:px-14 md:py-5 tracking-wider pulse-glow ink-splat transition-transform hover:scale-105 active:scale-95"
+                            style={{
+                                clipPath:
+                                    "polygon(0% 0%, 98% 2%, 100% 96%, 1% 100%)",
+                            }}
+                        >
+                            Break the code. Break the multiverse.
+                        </button>
+                    </motion.div>
 
-                {/* Scroll label */}
-                <motion.p
-                    className="mt-6 md:mt-8 font-label text-xs md:text-sm text-white/40 tracking-widest"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2 }}
-                >
-                    SCROLL TO ENTER THE MULTIVERSE ↓
-                </motion.p>
+                    <motion.p
+                        className="font-label text-xs md:text-sm text-white/40 tracking-widest"
+                        style={{ marginTop: "1.5rem" }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2 }}
+                    >
+                        SCROLL TO ENTER THE MULTIVERSE ↓
+                    </motion.p>
+                </div>
             </div>
         </section>
     );

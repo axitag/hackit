@@ -16,20 +16,23 @@ const events = [
 ];
 
 export default function Schedule() {
+    const total = events.length;
+
     return (
-        <section id="schedule" className="snap-section relative px-6 md:px-12 lg:px-16 overflow-hidden flex flex-col gap-10">
+        <section id="schedule" className="snap-section-auto relative overflow-hidden flex flex-col" style={{ padding: '4rem 1.5rem' }}>
             {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image
                     src="/images/timeline_bg.png"
                     alt="Timeline section background"
                     fill
-                    className="object-cover opacity-20"
+                    className="object-cover opacity-15"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)] via-transparent to-[var(--bg)]" />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #0a0a0a, transparent 15%, transparent 85%, #0a0a0a)' }} />
             </div>
 
-            <div className="relative z-10 text-center mb-6 md:mb-16">
+            {/* Heading */}
+            <div className="relative z-10 text-center" style={{ marginBottom: '3rem' }}>
                 <GlitchText
                     as="h2"
                     className="font-display text-3xl sm:text-5xl md:text-7xl text-white tracking-wider"
@@ -38,67 +41,211 @@ export default function Schedule() {
                 </GlitchText>
             </div>
 
-            <div className="relative z-10" style={{ maxWidth: '72rem', margin: '0 auto', width: '100%' }}>
-                {/* Vertical line */}
-                <div className="absolute left-[20px] md:left-[140px] top-0 bottom-0 w-[3px] bg-[var(--accent)] opacity-30" />
+            {/* Curved Timeline */}
+            <div className="relative z-10" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
+                {/* SVG curved path */}
+                <svg
+                    className="absolute hidden md:block"
+                    style={{
+                        top: 0,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '80%',
+                        height: '100%',
+                        pointerEvents: 'none',
+                    }}
+                    viewBox="0 0 400 1000"
+                    preserveAspectRatio="none"
+                    fill="none"
+                >
+                    <path
+                        d={`M200,0 ${events.map((_, i) => {
+                            const y = (i / (total - 1)) * 1000;
+                            const x = i % 2 === 0 ? 120 : 280;
+                            const cpx = i % 2 === 0 ? 280 : 120;
+                            return `S${cpx},${y - 40} ${x},${y}`;
+                        }).join(' ')}`}
+                        stroke="#E8192C"
+                        strokeWidth="2"
+                        strokeOpacity="0.3"
+                        strokeDasharray="6 4"
+                    />
+                </svg>
 
-                {events.map((event, i) => (
-                    <motion.div
-                        key={i}
-                        className={`relative flex items-stretch mb-0 ${i % 2 === 0 ? "bg-[var(--bg)]" : "bg-[var(--surface)]"
-                            }`}
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.5 }}
-                        transition={{ duration: 0.4, delay: i * 0.08, ease: [0.22, 0.03, 0.26, 1] }}
-                    >
-                        {/* Speed lines for highlight events */}
-                        {event.highlight && (
-                            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* Mobile vertical line */}
+                <div
+                    className="absolute md:hidden"
+                    style={{
+                        left: '24px',
+                        top: 0,
+                        bottom: 0,
+                        width: '2px',
+                        background: 'linear-gradient(to bottom, transparent, #E8192C33, #E8192C33, transparent)',
+                    }}
+                />
+
+                {/* Event cards */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                    {events.map((event, i) => {
+                        const isLeft = i % 2 === 0;
+
+                        return (
+                            <motion.div
+                                key={i}
+                                className="relative"
+                                initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.5 }}
+                                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 0.03, 0.26, 1] }}
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'flex-start',
+                                    paddingLeft: '3rem',
+                                }}
+                            >
+                                {/* Mobile dot */}
                                 <div
-                                    className="absolute inset-0 opacity-10"
+                                    className="absolute md:hidden"
                                     style={{
-                                        background: `repeating-conic-gradient(from 0deg at 0% 50%,
-                      transparent 0deg,
-                      rgba(232,0,61,0.15) 1deg,
-                      transparent 3deg)`,
+                                        left: '16px',
+                                        top: '50%',
+                                        transform: 'translateY(-50%)',
+                                        width: event.highlight ? '18px' : '12px',
+                                        height: event.highlight ? '18px' : '12px',
+                                        borderRadius: '50%',
+                                        background: event.highlight ? '#E8192C' : '#333',
+                                        border: event.highlight ? '2px solid #E8192C' : '2px solid #444',
+                                        boxShadow: event.highlight ? '0 0 12px rgba(232,25,44,0.5)' : 'none',
+                                        zIndex: 10,
                                     }}
                                 />
-                            </div>
-                        )}
 
-                        {/* Time column */}
-                        <div className="w-[110px] sm:w-[160px] md:w-[220px] flex-shrink-0 p-3 sm:p-5 md:p-6 flex items-center">
-                            <span className="font-display text-[11px] sm:text-base md:text-lg text-[var(--accent)] whitespace-nowrap">
-                                {event.time}
-                            </span>
-                        </div>
+                                {/* Desktop layout — alternating sides */}
+                                <div
+                                    className="hidden md:flex items-center w-full"
+                                    style={{
+                                        flexDirection: isLeft ? 'row' : 'row-reverse',
+                                    }}
+                                >
+                                    {/* Card */}
+                                    <div
+                                        className="group relative"
+                                        style={{
+                                            width: '45%',
+                                            background: event.highlight ? 'rgba(232,25,44,0.08)' : 'rgba(20,20,20,0.8)',
+                                            border: event.highlight ? '1px solid rgba(232,25,44,0.3)' : '1px solid rgba(255,255,255,0.06)',
+                                            padding: '1.25rem 1.5rem',
+                                            position: 'relative',
+                                            transition: 'all 0.3s ease',
+                                        }}
+                                    >
+                                        {/* Red left accent for highlight */}
+                                        {event.highlight && (
+                                            <div style={{
+                                                position: 'absolute',
+                                                left: 0,
+                                                top: 0,
+                                                bottom: 0,
+                                                width: '3px',
+                                                background: '#E8192C',
+                                            }} />
+                                        )}
 
-                        {/* Dot on timeline */}
-                        <div className="relative flex-shrink-0 w-[20px] flex items-center justify-center">
-                            <div
-                                className={`w-3 h-3 rounded-full z-10 ${event.highlight
-                                    ? "bg-[var(--accent)] shadow-[0_0_10px_rgba(232,0,61,0.6)]"
-                                    : "bg-white/30"
-                                    }`}
-                            />
-                        </div>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                            <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>{event.icon}</span>
+                                            <div>
+                                                <span
+                                                    className="font-display"
+                                                    style={{
+                                                        display: 'block',
+                                                        fontSize: '0.65rem',
+                                                        letterSpacing: '0.2em',
+                                                        color: event.highlight ? '#E8192C' : 'rgba(255,255,255,0.4)',
+                                                        marginBottom: '0.25rem',
+                                                    }}
+                                                >
+                                                    {event.time}
+                                                </span>
+                                                <span
+                                                    className="font-body"
+                                                    style={{
+                                                        display: 'block',
+                                                        fontSize: '1.1rem',
+                                                        color: event.highlight ? '#fff' : 'rgba(255,255,255,0.7)',
+                                                        fontWeight: event.highlight ? 700 : 400,
+                                                        letterSpacing: '0.05em',
+                                                    }}
+                                                >
+                                                    {event.name}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        {/* Event name */}
-                        <div
-                            className={`flex-1 p-4 md:p-6 flex items-center gap-4 ${event.highlight ? "border-l-[3px] border-[var(--accent)]" : ""
-                                }`}
-                        >
-                            <span className="text-lg sm:text-2xl md:text-3xl">{event.icon}</span>
-                            <span
-                                className={`font-body text-base sm:text-lg md:text-xl ${event.highlight ? "text-white font-bold" : "text-white/70"
-                                    }`}
-                            >
-                                {event.name}
-                            </span>
-                        </div>
-                    </motion.div>
-                ))}
+                                    {/* Center dot */}
+                                    <div style={{ width: '10%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        <div
+                                            style={{
+                                                width: event.highlight ? '18px' : '10px',
+                                                height: event.highlight ? '18px' : '10px',
+                                                borderRadius: '50%',
+                                                background: event.highlight ? '#E8192C' : '#333',
+                                                border: event.highlight ? '2px solid #E8192C' : '2px solid #444',
+                                                boxShadow: event.highlight ? '0 0 16px rgba(232,25,44,0.5)' : 'none',
+                                                position: 'relative',
+                                                zIndex: 10,
+                                            }}
+                                        />
+                                    </div>
+
+                                    {/* Spacer for opposite side */}
+                                    <div style={{ width: '45%' }} />
+                                </div>
+
+                                {/* Mobile card */}
+                                <div
+                                    className="md:hidden"
+                                    style={{
+                                        width: '100%',
+                                        background: event.highlight ? 'rgba(232,25,44,0.08)' : 'rgba(20,20,20,0.8)',
+                                        border: event.highlight ? '1px solid rgba(232,25,44,0.3)' : '1px solid rgba(255,255,255,0.06)',
+                                        borderLeft: event.highlight ? '3px solid #E8192C' : '1px solid rgba(255,255,255,0.06)',
+                                        padding: '1rem 1.25rem',
+                                    }}
+                                >
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                        <span style={{ fontSize: '1.25rem' }}>{event.icon}</span>
+                                        <div>
+                                            <span
+                                                className="font-display"
+                                                style={{
+                                                    display: 'block',
+                                                    fontSize: '0.6rem',
+                                                    letterSpacing: '0.2em',
+                                                    color: event.highlight ? '#E8192C' : 'rgba(255,255,255,0.4)',
+                                                    marginBottom: '0.2rem',
+                                                }}
+                                            >
+                                                {event.time}
+                                            </span>
+                                            <span
+                                                className="font-body"
+                                                style={{
+                                                    display: 'block',
+                                                    fontSize: '0.95rem',
+                                                    color: event.highlight ? '#fff' : 'rgba(255,255,255,0.7)',
+                                                    fontWeight: event.highlight ? 700 : 400,
+                                                }}
+                                            >
+                                                {event.name}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
             </div>
         </section>
     );

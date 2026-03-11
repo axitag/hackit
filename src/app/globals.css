@@ -621,6 +621,29 @@ body {
   animation: pulseGlow 2s ease-in-out infinite;
 }
 
+/* Section shake — used by Prizes stamp animation */
+@keyframes sectionShake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-3px);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+
+  75% {
+    transform: translateX(-2px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /* Ink splat */
 @keyframes inkSplat {
   0% {
@@ -755,7 +778,7 @@ body {
    PROGRESS BAR  (NoirTimeline)
    ============================================================ */
 .progress-bar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   height: 4px;
@@ -771,9 +794,13 @@ body {
 .map-title-overlay {
   position: absolute;
   top: 24px;
-  left: 32px;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
   z-index: 30;
   pointer-events: none;
+  text-align: center;
   animation: stutter-in 0.6s steps(5) both;
 }
 
@@ -822,6 +849,22 @@ body {
 }
 
 /* ============================================================
+   MAP INNER CONTAINER  (NoirTimeline — crops the map)
+   ============================================================ */
+.map-container-inner {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 75%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+/* ============================================================
    WORLD MAP CONTAINER  (WorldMap)
    ============================================================ */
 .world-map-container {
@@ -866,10 +909,11 @@ body {
   z-index: 40;
   opacity: 0.06;
   mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 512px 512px;
-  animation: grain 0.4s steps(8) infinite;
+  animation: grain 2s steps(8) infinite;
+  will-change: background-position;
 }
 
 /* ============================================================
@@ -1080,9 +1124,22 @@ body {
 /* ============================================================
    PLANE SPRITE  (NoirTimeline)
    ============================================================ */
+@keyframes plane-bob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
 .plane-sprite {
   filter:
     drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 6px rgba(232, 0, 61, 0.2));
+  animation: plane-bob 1.7s ease-in-out infinite;
 }
 
 /* ============================================================
