@@ -25,6 +25,22 @@ export default function Hero() {
             {/* Top-left Menu */}
             <Navigation />
 
+            {/* Amity Logo — Upper Right */}
+            <motion.div
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-20"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+            >
+                <Image
+                    src="/images/amity_bg_2.png"
+                    alt="Amity logo"
+                    width={300}
+                    height={300}
+                    className="w-[120px] sm:w-[150px] md:w-[180px] lg:w-[220px] h-auto filter brightness-100"
+                />
+            </motion.div>
+
             {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image
@@ -178,15 +194,9 @@ export default function Hero() {
                             alt="Akiyam logo"
                             width={300}
                             height={300}
-                            className="w-[160px] md:w-[220px] lg:w-[280px] h-auto filter brightness-100"
+                            className="w-[200px] md:w-[280px] lg:w-[360px] h-auto filter brightness-100"
                         />
-                        <Image
-                            src="/images/amity_bg_2.png"
-                            alt="Amity logo"
-                            width={300}
-                            height={300}
-                            className="w-[120px] sm:w-[140px] md:w-[160px] lg:w-[180px] h-auto filter brightness-100"
-                        />
+
                     </div>
                 </motion.div>
 
